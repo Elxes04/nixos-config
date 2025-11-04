@@ -15,18 +15,14 @@
     ../modules/desktop/flatpak.nix
 
     # Applications and tools
-    ../modules/system/users.nix
-    ../modules/creative/krita.nix
-    ../modules/desktop/gnome.nix
     ../modules/apps/firefox.nix
-    ../modules/desktop/pipewire.nix
-    ../modules/system/network.nix
     ../modules/apps/vscode.nix
     ../modules/apps/telegram.nix
     ../modules/apps/steam.nix
+    
+    # Creative tools
+    ../modules/creative/krita.nix
     ../modules/creative/obs-studio.nix
-    ../modules/desktop/flatpak.nix
-    ../modules/system/base.nix
   ];
 
   system.stateVersion = "25.05";
