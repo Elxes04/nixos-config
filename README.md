@@ -49,9 +49,12 @@ This configuration includes a comprehensive set of applications and tools:
 ### 🛠️ **System Tools**
 - **Btop** - System resource monitor
 - **LibreOffice** - Office suite
+- **FileZilla client** - FTP/SFTP Client
 
 ### 🖥️ **Desktop Environment**
 - **GNOME** - Desktop environment
+- **Plasma** - Desktop Enviroment
+- **XFCE** - Desktop Enviroment
 - **PipeWire** - Audio system
 - **Flatpak** - Application distribution
 

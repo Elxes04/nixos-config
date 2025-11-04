@@ -8,11 +8,12 @@
     ../modules/system/base.nix
     ../modules/system/network.nix
     ../modules/system/users.nix
-
-    # Desktop environment modules
-    ../modules/desktop/gnome.nix
     ../modules/desktop/pipewire.nix
-    ../modules/desktop/flatpak.nix
+
+    # Desktop environment
+    ../modules/desktop-environments/gnome.nix
+    # ../modules/desktop-environments/plasma.nix
+    # ../modules/desktop-environments/xfce.nix
 
     # Applications
     ../modules/apps/firefox.nix
@@ -31,6 +32,7 @@
     # Tools
     ../modules/tools/btop.nix
     ../modules/tools/libreoffice.nix
+    ../modules/tools/filezilla.nix
 
     # Entertainment
     ../modules/entertainment/discord.nix
