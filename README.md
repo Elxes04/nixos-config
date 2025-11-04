@@ -1,6 +1,6 @@
 # 🧊 Elxes' NixOS Configuration
 
-> Modular and reproducible **NixOS** configuration with **Flakes** and **Home Manager**
+> Complete and reproducible **NixOS** configuration with **Flakes** and **Home Manager**
 
 ![NixOS](https://img.shields.io/badge/NixOS-25.05-blue?logo=nixos&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -18,39 +18,47 @@
    sudo cp -r * /etc/nixos/
    ```
 
-3. **Use the interactive module selector:**
+3. **Apply configuration:**
    ```bash
    cd /etc/nixos
-   sudo ./select-modules.sh
-   ```
-
-4. **Apply configuration:**
-   ```bash
    sudo nixos-rebuild switch --flake .#nixos
    ```
 
-## 🎛️ Interactive Module Management
+## 📦 Included Software
 
-This configuration features a **TUI (Text User Interface)** script for easy module management:
+This configuration includes a comprehensive set of applications and tools:
 
-```bash
-sudo ./select-modules.sh
-```
+### 🎨 **Creative Applications**
+- **GIMP** - GNU Image Manipulation Program
+- **Krita** - Digital painting and illustration
+- **OBS Studio** - Screen recording and live streaming
 
-### Available Module Categories:
+### 💻 **Applications**
+- **Firefox** - Web browser
+- **Steam** - Gaming platform
+- **Telegram** - Instant messaging
+- **VS Code** - Code editor
 
-- 🎨 **Creative:** Krita, GIMP, OBS Studio
-- 💻 **Development:** Docker, VSCode  
-- 🎮 **Entertainment:** Discord, VLC
-- 🛠️ **Tools:** Btop, LibreOffice
-- 🖥️ **Apps:** Firefox, Steam, Telegram
+### 🔧 **Development Tools**
+- **Docker** - Containerization platform
 
-Simply use commands like:
-```
-Command: toggle creative/krita
-Command: toggle tools/btop
-Command: apply
-```
+### 🎮 **Entertainment**
+- **Discord** - Voice and text chat
+- **VLC** - Media player
+
+### 🛠️ **System Tools**
+- **Btop** - System resource monitor
+- **LibreOffice** - Office suite
+
+### 🖥️ **Desktop Environment**
+- **GNOME** - Desktop environment
+- **PipeWire** - Audio system
+- **Flatpak** - Application distribution
+
+### ⚙️ **System Configuration**
+- **Base system** - Essential system packages
+- **Network** - NetworkManager and connectivity
+- **Users** - User accounts and permissions
 
 ## 📁 Repository Structure
 
@@ -68,17 +76,16 @@ nixos/
 │   ├── 📁 desktop/          # Desktop environment
 │   └── 📁 system/           # System configuration
 ├── 📄 home.nix              # Home Manager configuration
-├── 🎛️ select-modules.sh      # Interactive module selector
 └── 📄 README.md             # This file
 ```
 
 ## 🔧 Key Features
 
+- ✅ **Complete Setup** - All essential applications included
 - ✅ **Modular Design** - Each app in its own file
-- ✅ **Interactive TUI** - Easy module selection
 - ✅ **Flakes Support** - Reproducible builds
 - ✅ **Home Manager** - User-level configuration
-- ✅ **Auto Backup** - Safe configuration changes
+- ✅ **GNOME Desktop** - Modern desktop environment
 - ✅ **English Codebase** - Clean, documented code
 
 ## 🛠️ Customization
@@ -93,22 +100,32 @@ nixos/
    }
    ```
 
-2. **Use the TUI script** to activate it:
-   ```bash
-   sudo ./select-modules.sh
-   toggle tools/neofetch
-   apply
+2. **Add it to the imports** in `hosts/nixos.nix`:
+   ```nix
+   imports = [
+     # ... other imports ...
+     ../modules/tools/neofetch.nix
+   ];
    ```
+
+3. **Rebuild the system:**
+   ```bash
+   sudo nixos-rebuild switch --flake .#nixos
+   ```
+
+### Removing Modules
+
+Simply remove the import line from `hosts/nixos.nix` and rebuild.
 
 
 ## 🎯 Philosophy
 
 This configuration follows these principles:
 
-- **Modularity** - One app per file
+- **Completeness** - All essential tools included by default
+- **Modularity** - One app per file for easy maintenance
 - **Simplicity** - Easy to understand and modify
 - **Reproducibility** - Same result everywhere
-- **Interactivity** - User-friendly management tools
 
 ## 📦 Installation Requirements
 

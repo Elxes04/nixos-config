@@ -14,15 +14,27 @@
     ../modules/desktop/pipewire.nix
     ../modules/desktop/flatpak.nix
 
-    # Applications and tools
+    # Applications
     ../modules/apps/firefox.nix
-    ../modules/apps/vscode.nix
-    ../modules/apps/telegram.nix
     ../modules/apps/steam.nix
-    
-    # Creative tools
+    ../modules/apps/telegram.nix
+    ../modules/apps/vscode.nix
+
+    # Development tools
+    ../modules/development/docker.nix
+
+    # Creative applications
+    ../modules/creative/gimp.nix
     ../modules/creative/krita.nix
     ../modules/creative/obs-studio.nix
+
+    # Tools
+    ../modules/tools/btop.nix
+    ../modules/tools/libreoffice.nix
+
+    # Entertainment
+    ../modules/entertainment/discord.nix
+    ../modules/entertainment/vlc.nix
   ];
 
   system.stateVersion = "25.05";
