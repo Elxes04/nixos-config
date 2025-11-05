@@ -16,6 +16,7 @@
     # ../modules/desktop-environments/xfce.nix
 
     # Applications
+    ../modules/desktop/flatpak.nix
     ../modules/apps/firefox.nix
     ../modules/apps/steam.nix
     ../modules/apps/telegram.nix
