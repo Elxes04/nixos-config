@@ -38,6 +38,7 @@
     # Entertainment
     ../modules/entertainment/discord.nix
     ../modules/entertainment/vlc.nix
+    ../modules/entertainment/mpv.nix
   ];
 
   system.stateVersion = "25.05";

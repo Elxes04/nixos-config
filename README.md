@@ -45,6 +45,7 @@ This configuration includes a comprehensive set of applications and tools:
 ### 🎮 **Entertainment**
 - **Discord** - Voice and text chat
 - **VLC** - Media player
+- **mpv** - an open-source command line media player
 
 ### 🛠️ **System Tools**
 - **Btop** - System resource monitor
