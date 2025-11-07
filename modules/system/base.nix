@@ -1,46 +1,153 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 {
-  imports = [
-    ../hardware-configuration.nix
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 3;
+  boot.loader.efi.canTouchEfiVariables = true;
 
-    # System modules
-    ../modules/system/base.nix
-    ../modules/system/network.nix
-    ../modules/system/users.nix
-    ../modules/desktop/pipewire.nix
+  hardware.enableRedistributableFirmware = true;
+  hardware.firmware = [ pkgs.linux-firmware ];
 
-    # Desktop environment
-    ../modules/desktop-environments/gnome.nix
-    # ../modules/desktop-environments/plasma.nix
-    # ../modules/desktop-environments/xfce.nix
+  # CPU microcode updates
+  hardware.cpu.intel.updateMicrocode = true;
 
-    # Applications
-    ../modules/desktop/flatpak.nix
-    ../modules/apps/firefox.nix
-    ../modules/apps/handbrake-custom.nix
-    ../modules/apps/steam.nix
-    ../modules/apps/telegram.nix
-    ../modules/apps/vscode.nix
+  # Enable thermal management
+  services.thermald.enable = true;
 
-    # Development tools
-    ../modules/development/docker.nix
+  # TLP - Advanced power management for Linux
+  services.tlp = {
+    enable = true;
+    settings = {
+      # CPU settings
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+      
+      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
+      
+      CPU_MIN_PERF_ON_AC = 0;
+      CPU_MAX_PERF_ON_AC = 100;
+      CPU_MIN_PERF_ON_BAT = 0;
+      CPU_MAX_PERF_ON_BAT = 60;
+      
+      # Enable audio power saving
+      SOUND_POWER_SAVE_ON_AC = 0;
+      SOUND_POWER_SAVE_ON_BAT = 1;
+      
+      # Battery settings for ThinkPad
+      START_CHARGE_THRESH_BAT0 = 75;
+      STOP_CHARGE_THRESH_BAT0 = 80;
+      
+      # Disk settings
+      DISK_DEVICES = "nvme0n1";
+      DISK_APM_LEVEL_ON_AC = "254 254";
+      DISK_APM_LEVEL_ON_BAT = "128 128";
+      
+      # PCIe power management
+      RUNTIME_PM_ON_AC = "auto";
+      RUNTIME_PM_ON_BAT = "auto";
+      
+      # USB autosuspend
+      USB_AUTOSUSPEND = 1;
+      USB_EXCLUDE_BTUSB = 1;
+      USB_EXCLUDE_PHONE = 1;
+    };
+  };
 
-    # Creative applications
-    ../modules/creative/gimp.nix
-    ../modules/creative/krita.nix
-    ../modules/creative/obs-studio.nix
+  # Disable power-profiles-daemon (conflicts with TLP)
+  services.power-profiles-daemon.enable = false;
 
-    # Tools
-    ../modules/tools/btop.nix
-    ../modules/tools/libreoffice.nix
-    ../modules/tools/filezilla.nix
+  # Enable fstrim for SSD optimization
+  services.fstrim = {
+    enable = true;
+    interval = "weekly";
+  };
 
-    # Entertainment
-    ../modules/entertainment/discord.nix
-    ../modules/entertainment/vlc.nix
-    ../modules/entertainment/mpv.nix
+  # Enable firmware updates via fwupd
+  services.fwupd.enable = true;
+
+  # Bluetooth optimization
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false; # Don't enable BT by default to save power
+    settings = {
+      General = {
+        ControllerMode = "dual";
+        FastConnectable = true;
+      };
+    };
+  };
+
+  # Graphics drivers - Intel
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver  # LIBVA_DRIVER_NAME=iHD
+      intel-vaapi-driver  # LIBVA_DRIVER_NAME=i965 (older but sometimes better)
+      vaapiVdpau
+      libvdpau-va-gl
+      intel-compute-runtime # OpenCL support
+    ];
+  };
+
+  # Enable VA-API for hardware video acceleration
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD"; # Force Intel iHD driver
+  };
+
+  time.timeZone = "Europe/Rome";
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  swapDevices = [ ];
+  zramSwap.enable = true;
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  
+  # Automatic garbage collection
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
+  # Optimize Nix store automatically
+  nix.optimise = {
+    automatic = true;
+    dates = [ "03:45" ];
+  };
+
+  environment.systemPackages = with pkgs; [
+    # Essential system tools
+    git
+    wget
+    curl
+    tree
+    fastfetch
+    flatpak
+    
+    # Power management and monitoring
+    powertop      # Power consumption analyzer
+    acpi          # Battery status
+    
+    # Hardware info
+    lshw          # Hardware lister
+    usbutils      # lsusb
+    pciutils      # lspci
+    
+    # Sensors and monitoring
+    lm_sensors    # Hardware sensors
+    
+    # Disk utilities
+    smartmontools # SMART monitoring for disks
+    nvme-cli      # NVMe management
   ];
 
-  system.stateVersion = "25.05";
+  security.sudo.enable = true;
+  
+  # Enable smartd for disk health monitoring
+  services.smartd = {
+    enable = true;
+    autodetect = true;
+  };
 }

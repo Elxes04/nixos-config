@@ -18,6 +18,7 @@
         export CCACHE_NOCOMPRESS=1
         
         # Force native CPU optimization flags
+        export NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1
         export NIX_CFLAGS_COMPILE="-O3 -pipe -march=native -mtune=native $NIX_CFLAGS_COMPILE"
         export CFLAGS="-O3 -pipe -march=native -mtune=native"
         export CXXFLAGS="-O3 -pipe -march=native -mtune=native"

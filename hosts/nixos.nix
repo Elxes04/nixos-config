@@ -8,6 +8,7 @@
     ../modules/system/base.nix
     ../modules/system/network.nix
     ../modules/system/users.nix
+    ../modules/system/wifi.nix
     ../modules/desktop/pipewire.nix
 
     # Desktop environment
@@ -18,6 +19,7 @@
     # Applications
     ../modules/desktop/flatpak.nix
     ../modules/apps/firefox.nix
+    ../modules/apps/handbrake-custom.nix
     ../modules/apps/steam.nix
     ../modules/apps/telegram.nix
     ../modules/apps/vscode.nix
