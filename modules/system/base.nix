@@ -1,41 +1,46 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 3;
-  boot.loader.efi.canTouchEfiVariables = true;
+  imports = [
+    ../hardware-configuration.nix
 
-  time.timeZone = "Europe/Rome";
-  i18n.defaultLocale = "en_US.UTF-8";
+    # System modules
+    ../modules/system/base.nix
+    ../modules/system/network.nix
+    ../modules/system/users.nix
+    ../modules/desktop/pipewire.nix
 
-  swapDevices = [ ];
-  zramSwap.enable = true;
+    # Desktop environment
+    ../modules/desktop-environments/gnome.nix
+    # ../modules/desktop-environments/plasma.nix
+    # ../modules/desktop-environments/xfce.nix
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  
-  # Automatic garbage collection
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
-  };
+    # Applications
+    ../modules/desktop/flatpak.nix
+    ../modules/apps/firefox.nix
+    ../modules/apps/handbrake-custom.nix
+    ../modules/apps/steam.nix
+    ../modules/apps/telegram.nix
+    ../modules/apps/vscode.nix
 
-  # Optimize Nix store automatically
-  nix.optimise = {
-    automatic = true;
-    dates = [ "03:45" ];
-  };
+    # Development tools
+    ../modules/development/docker.nix
 
-  environment.systemPackages = with pkgs; [
-    # Essential system tools
-    git
-    wget
-    curl
-    tree
-    fastfetch
-    flatpak
+    # Creative applications
+    ../modules/creative/gimp.nix
+    ../modules/creative/krita.nix
+    ../modules/creative/obs-studio.nix
+
+    # Tools
+    ../modules/tools/btop.nix
+    ../modules/tools/libreoffice.nix
+    ../modules/tools/filezilla.nix
+
+    # Entertainment
+    ../modules/entertainment/discord.nix
+    ../modules/entertainment/vlc.nix
+    ../modules/entertainment/mpv.nix
   ];
 
-  security.sudo.enable = true;
+  system.stateVersion = "25.05";
 }
