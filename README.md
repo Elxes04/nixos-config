@@ -39,8 +39,12 @@ This configuration includes a comprehensive set of applications and tools:
 - **Telegram** - Instant messaging
 - **VS Code** - Code editor
 
+### 🎮 **Games**
+- **Minecraft** - Prism Launcher with multi-version Java support
+
 ### 🔧 **Development Tools**
 - **Docker** - Containerization platform
+- **Java** - JDK 8, 17, and 21 (for Minecraft and development)
 
 ### 🎮 **Entertainment**
 - **Discord** - Voice and text chat
@@ -82,6 +86,7 @@ nixos/
 │   ├── 📁 creative/         # Creative software
 │   ├── 📁 development/      # Development tools
 │   ├── 📁 entertainment/    # Entertainment apps
+│   ├── 📁 games/            # Gaming applications
 │   ├── 📁 tools/            # System utilities
 │   ├── 📁 desktop/          # Desktop environment
 │   ├── 📁 hardware/         # Hardware-specific configs

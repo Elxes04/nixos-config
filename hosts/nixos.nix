@@ -34,8 +34,12 @@
     ../modules/apps/telegram.nix
     ../modules/apps/vscode.nix
 
+    # Games
+    ../modules/games/minecraft.nix
+
     # Development tools
     ../modules/development/docker.nix
+    ../modules/development/java.nix
 
     # Creative applications
     ../modules/creative/gimp.nix
