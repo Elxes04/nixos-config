@@ -64,6 +64,12 @@ This configuration includes a comprehensive set of applications and tools:
 - **Network** - NetworkManager and connectivity
 - **Users** - User accounts and permissions
 
+### 🔌 **Hardware Support**
+- **WiFi Cards** - Intel, MediaTek, Broadcom, Realtek
+- **Graphics Cards** - Intel, AMD, NVIDIA
+
+Each hardware category is organized by manufacturer for easy navigation and selection.
+
 ## 📁 Repository Structure
 
 ```
@@ -78,6 +84,16 @@ nixos/
 │   ├── 📁 entertainment/    # Entertainment apps
 │   ├── 📁 tools/            # System utilities
 │   ├── 📁 desktop/          # Desktop environment
+│   ├── 📁 hardware/         # Hardware-specific configs
+│   │   ├── 📁 graphics-cards/
+│   │   │   ├── intel/
+│   │   │   ├── amd/
+│   │   │   └── nvidia/
+│   │   └── 📁 wifi-cards/
+│   │       ├── intel/
+│   │       ├── mediatek/
+│   │       ├── broadcom/
+│   │       └── realtek/
 │   └── 📁 system/           # System configuration
 ├── 📄 home.nix              # Home Manager configuration
 └── 📄 README.md             # This file
@@ -87,12 +103,44 @@ nixos/
 
 - ✅ **Complete Setup** - All essential applications included
 - ✅ **Modular Design** - Each app in its own file
+- ✅ **Hardware Support** - Pre-configured modules for various WiFi cards and GPUs
 - ✅ **Flakes Support** - Reproducible builds
 - ✅ **Home Manager** - User-level configuration
 - ✅ **GNOME Desktop** - Modern desktop environment
 - ✅ **English Codebase** - Clean, documented code
 
 ## 🛠️ Customization
+
+### Hardware Configuration
+
+**Before first installation**, configure hardware modules in `hosts/nixos.nix`:
+
+1. **Identify your hardware:**
+   ```bash
+   # Check WiFi card
+   lspci | grep -i network
+   
+   # Check GPU
+   lspci | grep -i vga
+   ```
+
+2. **Enable appropriate modules** in `hosts/nixos.nix`:
+   ```nix
+   imports = [
+     # WiFi Cards - uncomment ONE that matches your card
+     ../modules/hardware/wifi-cards/intel
+     # ../modules/hardware/wifi-cards/mediatek
+     # ../modules/hardware/wifi-cards/broadcom
+     # ../modules/hardware/wifi-cards/realtek
+     
+     # Graphics Cards - uncomment ONE that matches your card
+     # ../modules/hardware/graphics-cards/intel
+     # ../modules/hardware/graphics-cards/amd
+     # ../modules/hardware/graphics-cards/nvidia
+   ];
+   ```
+
+See `modules/hardware/README.md` for detailed hardware documentation.
 
 ### Adding New Modules
 

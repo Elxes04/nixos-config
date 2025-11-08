@@ -8,8 +8,18 @@
     ../modules/system/base.nix
     ../modules/system/network.nix
     ../modules/system/users.nix
-    ../modules/system/wifi.nix
     ../modules/desktop/pipewire.nix
+
+    # Hardware - WiFi Cards (uncomment the one matching your WiFi card)
+    ../modules/hardware/wifi-cards/intel
+    # ../modules/hardware/wifi-cards/mediatek
+    # ../modules/hardware/wifi-cards/broadcom
+    # ../modules/hardware/wifi-cards/realtek
+
+    # Hardware - Graphics Cards (uncomment the one matching your GPU)
+    # ../modules/hardware/graphics-cards/intel
+    # ../modules/hardware/graphics-cards/amd
+    # ../modules/hardware/graphics-cards/nvidia
 
     # Desktop environment
     ../modules/desktop-environments/gnome.nix

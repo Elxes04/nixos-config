@@ -1,42 +1,38 @@
 { config, lib, pkgs, ... }:
 
+let
+  # Custom HandBrake with native CPU optimizations
+  handbrake-optimized = pkgs.handbrake.override {
+    # Use native optimizations
+    stdenv = pkgs.stdenvAdapters.impureUseNativeOptimizations pkgs.stdenv;
+  };
+  
+  handbrake-native = handbrake-optimized.overrideAttrs (oldAttrs: {
+    # Disable hardening to allow native CPU optimizations
+    hardeningDisable = [ "all" ];
+    
+    preConfigure = ''
+      ${oldAttrs.preConfigure or ""}
+      
+      echo "Building HandBrake with native CPU optimizations enabled"
+    '';
+    
+    configureFlags = (oldAttrs.configureFlags or []) ++ [
+      "--optimize=speed"
+      "--enable-gtk"
+      # Add specific encoder optimizations if needed
+      # "--enable-qsv"  # Intel Quick Sync (if you have Intel GPU)
+      # "--enable-nvenc" # NVIDIA encoding (if you have NVIDIA GPU)
+    ];
+    
+    # Ensure proper build type
+    cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
+      "-DCMAKE_BUILD_TYPE=Release"
+    ];
+  });
+in
 {
-  # Enable ccache system-wide for faster recompilation
-  programs.ccache.enable = true;
-  
   environment.systemPackages = [
-    (pkgs.handbrake.overrideAttrs (oldAttrs: {
-      # Disable hardening to allow native CPU optimizations
-      hardeningDisable = [ "all" ];
-      
-      nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [ pkgs.ccache ];
-      
-      preConfigure = ''
-        ${oldAttrs.preConfigure or ""}
-        
-        export CCACHE_DIR=/var/cache/ccache
-        export CCACHE_NOCOMPRESS=1
-        
-        # Force native CPU optimization flags
-        export NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1
-        export NIX_CFLAGS_COMPILE="-O3 -pipe -march=native -mtune=native $NIX_CFLAGS_COMPILE"
-        export CFLAGS="-O3 -pipe -march=native -mtune=native"
-        export CXXFLAGS="-O3 -pipe -march=native -mtune=native"
-        export LDFLAGS="-O3 -march=native $LDFLAGS"
-        
-        export CC="ccache gcc"
-        export CXX="ccache g++"
-      '';
-      
-      configureFlags = (oldAttrs.configureFlags or []) ++ [
-        "--optimize=speed"
-        "--enable-gtk"
-      ];
-    }))
-  ];
-  
-  # ccache directory
-  systemd.tmpfiles.rules = [
-    "d /var/cache/ccache 0755 root root -"
+    handbrake-native
   ];
 }
