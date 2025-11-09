@@ -8,6 +8,7 @@
     ../modules/system/base.nix
     ../modules/system/network.nix
     ../modules/system/users.nix
+    ../modules/system/filesystems.nix
     ../modules/desktop/pipewire.nix
 
     # Hardware - WiFi Cards (uncomment the one matching your WiFi card)

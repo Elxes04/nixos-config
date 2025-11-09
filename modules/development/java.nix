@@ -13,6 +13,17 @@
     jdk17          # Java 17 LTS (for older Minecraft versions 1.18+)
     jdk8           # Java 8 (for legacy Minecraft versions)
     
+    # Create wrapper scripts for easy version selection
+    (pkgs.writeShellScriptBin "java8" ''
+      exec ${pkgs.jdk8}/bin/java "$@"
+    '')
+    (pkgs.writeShellScriptBin "java17" ''
+      exec ${pkgs.jdk17}/bin/java "$@"
+    '')
+    (pkgs.writeShellScriptBin "java21" ''
+      exec ${pkgs.jdk21}/bin/java "$@"
+    '')
+    
     # Useful Java tools
     # maven        # Uncomment if you need Maven
     # gradle       # Uncomment if you need Gradle
