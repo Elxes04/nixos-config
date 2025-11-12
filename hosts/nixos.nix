@@ -41,6 +41,7 @@
     # Development tools
     ../modules/development/docker.nix
     ../modules/development/java.nix
+  ../modules/development/rust.nix
 
     # Creative applications
     ../modules/creative/gimp.nix
