@@ -1,0 +1,260 @@
+/* ====================================================================
+   Modern Waybar Style - Cyber Synthwave Theme
+   Matches Hyprland configuration
+   ==================================================================== */
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", "Symbols Nerd Font";
+    font-size: 14px;
+    font-weight: 600;
+    min-height: 0;
+}
+
+window#waybar {
+    background: linear-gradient(to bottom, rgba(10, 14, 26, 0.95), rgba(13, 23, 43, 0.9));
+    color: #e6e6fa;
+    border-bottom: 3px solid transparent;
+    border-image: linear-gradient(to right, #00d9ff, #bd00ff) 1;
+    backdrop-filter: blur(10px);
+    transition-property: background-color;
+    transition-duration: 0.3s;
+}
+
+window#waybar.hidden {
+    opacity: 0;
+}
+
+/* ========== Workspace Buttons ========== */
+#workspaces {
+    margin: 0 8px;
+}
+
+#workspaces button {
+    padding: 0 12px;
+    margin: 0 3px;
+    background: rgba(26, 35, 50, 0.6);
+    color: #7a8ba3;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    border: 2px solid transparent;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 217, 255, 0.15);
+    color: #00d9ff;
+    box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+#workspaces button.active {
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.2), rgba(189, 0, 255, 0.2));
+    color: #00d9ff;
+    border: 2px solid #00d9ff;
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.4), inset 0 0 10px rgba(0, 217, 255, 0.1);
+    font-weight: bold;
+}
+
+#workspaces button.urgent {
+    background: rgba(255, 0, 85, 0.3);
+    color: #ff0055;
+    border: 2px solid #ff0055;
+    animation: urgent-blink 1s ease-in-out infinite;
+}
+
+@keyframes urgent-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+/* ========== Window Title ========== */
+#window {
+    margin: 0 12px;
+    padding: 4px 16px;
+    color: #00d9ff;
+    font-weight: 500;
+    background: rgba(0, 217, 255, 0.08);
+    border-radius: 8px;
+    border-left: 3px solid #00d9ff;
+}
+
+/* ========== Module Styling ========== */
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#tray {
+    padding: 4px 14px;
+    margin: 0 4px;
+    background: rgba(26, 35, 50, 0.5);
+    border-radius: 8px;
+    color: #e6e6fa;
+    transition: all 0.3s ease;
+}
+
+#clock {
+    color: #bd00ff;
+    font-weight: bold;
+    background: linear-gradient(135deg, rgba(189, 0, 255, 0.15), rgba(0, 217, 255, 0.1));
+    border: 2px solid rgba(189, 0, 255, 0.3);
+    padding: 4px 18px;
+}
+
+#clock:hover {
+    background: linear-gradient(135deg, rgba(189, 0, 255, 0.25), rgba(0, 217, 255, 0.15));
+    box-shadow: 0 0 15px rgba(189, 0, 255, 0.3);
+}
+
+/* ========== Battery ========== */
+#battery {
+    color: #00ff9f;
+}
+
+#battery.charging, #battery.plugged {
+    color: #00ff9f;
+    background: rgba(0, 255, 159, 0.15);
+    border: 2px solid rgba(0, 255, 159, 0.3);
+}
+
+#battery.warning:not(.charging) {
+    color: #ffbd00;
+    background: rgba(255, 189, 0, 0.15);
+    border: 2px solid rgba(255, 189, 0, 0.3);
+    animation: battery-warning 2s ease-in-out infinite;
+}
+
+#battery.critical:not(.charging) {
+    color: #ff0055;
+    background: rgba(255, 0, 85, 0.2);
+    border: 2px solid #ff0055;
+    animation: battery-critical 0.5s ease-in-out infinite;
+}
+
+@keyframes battery-warning {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes battery-critical {
+    0%, 100% { 
+        background: rgba(255, 0, 85, 0.3);
+        box-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
+    }
+    50% { 
+        background: rgba(255, 0, 85, 0.6);
+        box-shadow: 0 0 20px rgba(255, 0, 85, 0.8);
+    }
+}
+
+/* ========== CPU ========== */
+#cpu {
+    color: #00ff9f;
+}
+
+#cpu:hover {
+    background: rgba(0, 255, 159, 0.15);
+    box-shadow: 0 0 10px rgba(0, 255, 159, 0.3);
+}
+
+/* ========== Memory ========== */
+#memory {
+    color: #bd00ff;
+}
+
+#memory:hover {
+    background: rgba(189, 0, 255, 0.15);
+    box-shadow: 0 0 10px rgba(189, 0, 255, 0.3);
+}
+
+/* ========== Temperature ========== */
+#temperature {
+    color: #00d9ff;
+}
+
+#temperature.critical {
+    color: #ff0055;
+    background: rgba(255, 0, 85, 0.2);
+    border: 2px solid #ff0055;
+    animation: temp-critical 1s ease-in-out infinite;
+}
+
+@keyframes temp-critical {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* ========== Backlight ========== */
+#backlight {
+    color: #ffbd00;
+}
+
+/* ========== Network ========== */
+#network {
+    color: #00d9ff;
+}
+
+#network.disconnected {
+    color: #ff0055;
+    background: rgba(255, 0, 85, 0.15);
+    border: 2px solid rgba(255, 0, 85, 0.3);
+}
+
+#network:hover {
+    background: rgba(0, 217, 255, 0.15);
+    box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+}
+
+/* ========== Audio ========== */
+#pulseaudio {
+    color: #ff006e;
+}
+
+#pulseaudio.muted {
+    color: #7a8ba3;
+    background: rgba(122, 139, 163, 0.1);
+}
+
+#pulseaudio:hover {
+    background: rgba(255, 0, 110, 0.15);
+    box-shadow: 0 0 10px rgba(255, 0, 110, 0.3);
+}
+
+/* ========== System Tray ========== */
+#tray {
+    background: rgba(26, 35, 50, 0.6);
+    padding: 4px 10px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background: rgba(255, 0, 110, 0.2);
+    border-radius: 6px;
+    animation: tray-attention 1s ease-in-out infinite;
+}
+
+@keyframes tray-attention {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* ========== Hover Effects ========== */
+#clock:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#backlight:hover,
+#network:hover,
+#pulseaudio:hover,
+#tray:hover {
+    transform: translateY(-2px);
+}

@@ -1,0 +1,62 @@
+# Swaylock Configuration - Cyber Synthwave Theme
+# Screen lock matching Hyprland theme
+
+# Appearance
+daemonize
+show-failed-attempts
+show-keyboard-layout
+
+# Colors - Cyber Synthwave
+color=0a0e1a
+
+# Ring colors
+ring-color=2a3341
+key-hl-color=00d9ff
+bs-hl-color=ff0055
+caps-lock-key-hl-color=ffbd00
+caps-lock-bs-hl-color=ff006e
+
+# Inside colors
+inside-color=13172b
+inside-clear-color=ffbd00
+inside-caps-lock-color=ffbd00
+inside-ver-color=00d9ff
+inside-wrong-color=ff0055
+
+# Line colors (between ring and inside)
+line-color=00d9ff
+line-clear-color=ffbd00
+line-caps-lock-color=ffbd00
+line-ver-color=00d9ff
+line-wrong-color=ff0055
+
+# Separator color
+separator-color=00000000
+
+# Text colors
+text-color=e6e6fa
+text-clear-color=0a0e1a
+text-caps-lock-color=0a0e1a
+text-ver-color=0a0e1a
+text-wrong-color=0a0e1a
+
+# Ring settings
+indicator-radius=120
+indicator-thickness=12
+
+# Font
+font=JetBrainsMono Nerd Font
+font-size=16
+
+# Effects
+effect-blur=7x5
+effect-vignette=0.5:0.5
+fade-in=0.2
+
+# Clock
+clock
+timestr=%H:%M
+datestr=%a, %d %b %Y
+
+# Behavior
+ignore-empty-password

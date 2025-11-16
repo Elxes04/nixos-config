@@ -27,6 +27,7 @@
     ../modules/desktop-environments/gnome.nix
     # ../modules/desktop-environments/plasma.nix
     # ../modules/desktop-environments/xfce.nix
+    ../modules/desktop-environments/hyprland.nix
 
     # Applications
     ../modules/desktop/flatpak.nix

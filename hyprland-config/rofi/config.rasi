@@ -1,0 +1,155 @@
+/* ====================================================================
+   Rofi Configuration - Cyber Synthwave Theme
+   Modern app launcher matching Hyprland theme
+   ==================================================================== */
+
+configuration {
+    modi: "drun,run,window,ssh";
+    show-icons: true;
+    terminal: "kitty";
+    drun-display-format: "{icon} {name}";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+    display-drun: "  Apps";
+    display-run: "  Run";
+    display-window: " 﩯 Window";
+    display-ssh: "  SSH";
+    sidebar-mode: true;
+}
+
+@theme "/dev/null"
+
+* {
+    bg: #0a0e1aee;
+    bg-alt: #13172bee;
+    bg-selected: #1a2332;
+    
+    fg: #e6e6fa;
+    fg-alt: #7a8ba3;
+    
+    border: #00d9ff;
+    border-alt: #bd00ff;
+    
+    background-color: @bg;
+    text-color: @fg;
+    
+    margin: 0;
+    padding: 0;
+    spacing: 0;
+}
+
+window {
+    width: 40%;
+    background-color: @bg;
+    border: 3px;
+    border-color: @border;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+mainbox {
+    children: [inputbar, message, listview, mode-switcher];
+    spacing: 15px;
+}
+
+inputbar {
+    children: [prompt, entry];
+    background-color: @bg-alt;
+    border-radius: 8px;
+    padding: 12px;
+    spacing: 10px;
+    border: 2px;
+    border-color: @border;
+}
+
+prompt {
+    background-color: transparent;
+    text-color: @border;
+    font: "JetBrainsMono Nerd Font Bold 12";
+}
+
+entry {
+    background-color: transparent;
+    placeholder: "Search...";
+    placeholder-color: @fg-alt;
+    cursor: text;
+    font: "JetBrainsMono Nerd Font 11";
+}
+
+message {
+    background-color: @bg-alt;
+    border: 2px;
+    border-color: @border-alt;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+textbox {
+    background-color: transparent;
+    text-color: @border-alt;
+}
+
+listview {
+    lines: 10;
+    columns: 1;
+    fixed-height: false;
+    scrollbar: false;
+    spacing: 6px;
+    background-color: transparent;
+}
+
+element {
+    padding: 10px;
+    background-color: transparent;
+    text-color: @fg;
+    border-radius: 8px;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @fg;
+}
+
+element alternate.normal {
+    background-color: @bg-alt;
+    text-color: @fg;
+}
+
+element selected.normal {
+    background-color: @bg-selected;
+    text-color: @border;
+    border: 2px;
+    border-color: @border;
+}
+
+element-icon {
+    size: 32px;
+    margin: 0 10px 0 0;
+    background-color: transparent;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+mode-switcher {
+    spacing: 10px;
+    background-color: transparent;
+}
+
+button {
+    padding: 10px;
+    background-color: @bg-alt;
+    text-color: @fg-alt;
+    border-radius: 8px;
+}
+
+button selected {
+    background-color: @bg-selected;
+    text-color: @border;
+    border: 2px;
+    border-color: @border;
+}
