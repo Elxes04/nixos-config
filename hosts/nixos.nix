@@ -10,6 +10,7 @@
     ../modules/system/users.nix
     ../modules/system/filesystems.nix
     ../modules/desktop/pipewire.nix
+    ../modules/system/easyeffects.nix
 
     # Hardware - WiFi Cards (uncomment the one matching your WiFi card)
     ../modules/hardware/wifi-cards/intel
@@ -37,11 +38,13 @@
 
     # Games
     ../modules/games/minecraft.nix
+    ../modules/games/gaming-tools.nix
 
     # Development tools
     ../modules/development/docker.nix
     ../modules/development/java.nix
-  ../modules/development/rust.nix
+    ../modules/development/rust.nix
+    ../modules/development/dev-tools.nix
 
     # Creative applications
     ../modules/creative/gimp.nix
