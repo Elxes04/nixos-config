@@ -28,7 +28,7 @@
     horizontal_padding = 12
     text_icon_padding = 12
     frame_width = 3
-    frame_color = "#00d9ff"
+    frame_color = "#ee1111"
     gap_size = 6
     separator_color = frame
     sort = true
@@ -71,17 +71,17 @@
     mouse_right_click = close_all
 
 [urgency_low]
-    background = "#13172bdd"
-    foreground = "#e6e6fa"
+    background = "#1a1a1add"
+    foreground = "#e0e0e0"
     frame_color = "#2a3341"
     timeout = 5
 [urgency_normal]
-    background = "#13172bee"
-    foreground = "#e6e6fa"
-    frame_color = "#00d9ff"
+    background = "#1a1a1aee"
+    foreground = "#e0e0e0"
+    frame_color = "#ee1111"
     timeout = 8
 [urgency_critical]
-    background = "#13172bf0"
+    background = "#1a1a1af0"
     foreground = "#ff0055"
     frame_color = "#ff0055"
     timeout = 0
@@ -89,7 +89,7 @@
 [discord]
     appname = "discord"
     urgency = low
-    frame_color = "#bd00ff"
+    frame_color = "#cc0000"
     
 [spotify]
     appname = "Spotify"

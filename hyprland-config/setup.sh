@@ -44,6 +44,13 @@ echo "🔗 Creating symlinks for Waybar..."
 ln -sf "$CONFIG_DIR/waybar/config.json" "$WAYBAR_DIR/config"
 ln -sf "$CONFIG_DIR/waybar/style.css" "$WAYBAR_DIR/style.css"
 
+# Create symlinks for Waybar scripts
+echo "🔗 Creating symlinks for Waybar scripts..."
+mkdir -p "$WAYBAR_DIR/scripts"
+ln -sf "$CONFIG_DIR/waybar/scripts/cpu-graph.sh" "$WAYBAR_DIR/scripts/cpu-graph.sh"
+ln -sf "$CONFIG_DIR/waybar/scripts/mem-graph.sh" "$WAYBAR_DIR/scripts/mem-graph.sh"
+chmod +x "$CONFIG_DIR/waybar/scripts/"*.sh
+
 # Create symlinks for Dunst
 echo "🔗 Creating symlinks for Dunst..."
 ln -sf "$CONFIG_DIR/dunst/dunstrc" "$DUNST_DIR/dunstrc"

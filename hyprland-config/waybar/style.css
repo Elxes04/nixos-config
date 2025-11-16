@@ -1,23 +1,22 @@
 /* ====================================================================
-   Modern Waybar Style - Cyber Synthwave Theme
-   Matches Hyprland configuration
+   Modern Waybar Style - ThinkPad Theme
+   Classic black and red ThinkPad aesthetic
    ==================================================================== */
 
 * {
     border: none;
     border-radius: 0;
     font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", "Symbols Nerd Font";
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
     min-height: 0;
 }
 
 window#waybar {
-    background: linear-gradient(to bottom, rgba(10, 14, 26, 0.95), rgba(13, 23, 43, 0.9));
-    color: #e6e6fa;
+    background: linear-gradient(to bottom, rgba(10, 10, 10, 0.95), rgba(26, 26, 26, 0.9));
+    color: #e0e0e0;
     border-bottom: 3px solid transparent;
-    border-image: linear-gradient(to right, #00d9ff, #bd00ff) 1;
-    backdrop-filter: blur(10px);
+    border-image: linear-gradient(to right, #ee1111, #ff3333) 1;
     transition-property: background-color;
     transition-duration: 0.3s;
 }
@@ -32,51 +31,54 @@ window#waybar.hidden {
 }
 
 #workspaces button {
-    padding: 0 12px;
-    margin: 0 3px;
-    background: rgba(26, 35, 50, 0.6);
-    color: #7a8ba3;
-    border-radius: 8px;
+    padding: 0 10px;
+    margin: 0 2px;
+    background: rgba(42, 42, 42, 0.6);
+    color: #999999;
+    border-radius: 6px;
     transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-    border: 2px solid transparent;
 }
 
 #workspaces button:hover {
-    background: rgba(0, 217, 255, 0.15);
-    color: #00d9ff;
-    box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
-    transform: translateY(-2px);
+    background: rgba(238, 17, 17, 0.15);
+    color: #ee1111;
+    box-shadow: 0 0 10px rgba(238, 17, 17, 0.3);
 }
 
 #workspaces button.active {
-    background: linear-gradient(135deg, rgba(0, 217, 255, 0.2), rgba(189, 0, 255, 0.2));
-    color: #00d9ff;
-    border: 2px solid #00d9ff;
-    box-shadow: 0 0 15px rgba(0, 217, 255, 0.4), inset 0 0 10px rgba(0, 217, 255, 0.1);
+    background: linear-gradient(135deg, rgba(238, 17, 17, 0.3), rgba(204, 0, 0, 0.2));
+    color: #ee1111;
+    box-shadow: 0 0 15px rgba(238, 17, 17, 0.4), inset 0 0 10px rgba(238, 17, 17, 0.1);
     font-weight: bold;
 }
 
 #workspaces button.urgent {
-    background: rgba(255, 0, 85, 0.3);
-    color: #ff0055;
-    border: 2px solid #ff0055;
+    background: rgba(238, 17, 17, 0.5);
+    color: #ff3333;
     animation: urgent-blink 1s ease-in-out infinite;
 }
 
 @keyframes urgent-blink {
-    0%, 100% { opacity: 1; }
+    0% { opacity: 1; }
     50% { opacity: 0.6; }
+    100% { opacity: 1; }
 }
 
 /* ========== Window Title ========== */
 #window {
-    margin: 0 12px;
-    padding: 4px 16px;
-    color: #00d9ff;
+    margin: 0 8px;
+    padding: 2px 12px;
+    color: #ee1111;
     font-weight: 500;
-    background: rgba(0, 217, 255, 0.08);
-    border-radius: 8px;
-    border-left: 3px solid #00d9ff;
+    background: rgba(238, 17, 17, 0.08);
+    border-radius: 6px;
+}
+
+#window.empty {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: transparent;
 }
 
 /* ========== Module Styling ========== */
@@ -89,25 +91,19 @@ window#waybar.hidden {
 #network,
 #pulseaudio,
 #tray {
-    padding: 4px 14px;
-    margin: 0 4px;
-    background: rgba(26, 35, 50, 0.5);
-    border-radius: 8px;
+    padding: 2px 10px;
+    margin: 0 3px;
+    background: transparent;
+    border-radius: 0;
     color: #e6e6fa;
     transition: all 0.3s ease;
 }
 
 #clock {
-    color: #bd00ff;
+    color: #cc0000;
     font-weight: bold;
-    background: linear-gradient(135deg, rgba(189, 0, 255, 0.15), rgba(0, 217, 255, 0.1));
-    border: 2px solid rgba(189, 0, 255, 0.3);
-    padding: 4px 18px;
-}
-
-#clock:hover {
-    background: linear-gradient(135deg, rgba(189, 0, 255, 0.25), rgba(0, 217, 255, 0.15));
-    box-shadow: 0 0 15px rgba(189, 0, 255, 0.3);
+    background: transparent;
+    padding: 2px 14px;
 }
 
 /* ========== Battery ========== */
@@ -117,31 +113,29 @@ window#waybar.hidden {
 
 #battery.charging, #battery.plugged {
     color: #00ff9f;
-    background: rgba(0, 255, 159, 0.15);
-    border: 2px solid rgba(0, 255, 159, 0.3);
+    background: transparent;
 }
 
 #battery.warning:not(.charging) {
     color: #ffbd00;
-    background: rgba(255, 189, 0, 0.15);
-    border: 2px solid rgba(255, 189, 0, 0.3);
+    background: transparent;
     animation: battery-warning 2s ease-in-out infinite;
 }
 
 #battery.critical:not(.charging) {
     color: #ff0055;
-    background: rgba(255, 0, 85, 0.2);
-    border: 2px solid #ff0055;
+    background: transparent;
     animation: battery-critical 0.5s ease-in-out infinite;
 }
 
 @keyframes battery-warning {
-    0%, 100% { opacity: 1; }
+    0% { opacity: 1; }
     50% { opacity: 0.7; }
+    100% { opacity: 1; }
 }
 
 @keyframes battery-critical {
-    0%, 100% { 
+    0% { 
         background: rgba(255, 0, 85, 0.3);
         box-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
     }
@@ -149,43 +143,55 @@ window#waybar.hidden {
         background: rgba(255, 0, 85, 0.6);
         box-shadow: 0 0 20px rgba(255, 0, 85, 0.8);
     }
+    100% { 
+        background: rgba(255, 0, 85, 0.3);
+        box-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
+    }
 }
 
 /* ========== CPU ========== */
 #cpu {
-    color: #00ff9f;
+    color: #ee1111;
 }
 
-#cpu:hover {
-    background: rgba(0, 255, 159, 0.15);
-    box-shadow: 0 0 10px rgba(0, 255, 159, 0.3);
+#cpu.warning {
+    color: #ff3333;
+}
+
+#cpu.critical {
+    color: #ff0055;
+    animation: temp-critical 1s ease-in-out infinite;
 }
 
 /* ========== Memory ========== */
 #memory {
-    color: #bd00ff;
+    color: #ee1111;
 }
 
-#memory:hover {
-    background: rgba(189, 0, 255, 0.15);
-    box-shadow: 0 0 10px rgba(189, 0, 255, 0.3);
+#memory.warning {
+    color: #ff3333;
+}
+
+#memory.critical {
+    color: #ff0055;
+    animation: temp-critical 1s ease-in-out infinite;
 }
 
 /* ========== Temperature ========== */
 #temperature {
-    color: #00d9ff;
+    color: #ee1111;
 }
 
 #temperature.critical {
     color: #ff0055;
-    background: rgba(255, 0, 85, 0.2);
-    border: 2px solid #ff0055;
+    background: transparent;
     animation: temp-critical 1s ease-in-out infinite;
 }
 
 @keyframes temp-critical {
-    0%, 100% { opacity: 1; }
+    0% { opacity: 1; }
     50% { opacity: 0.7; }
+    100% { opacity: 1; }
 }
 
 /* ========== Backlight ========== */
@@ -195,39 +201,28 @@ window#waybar.hidden {
 
 /* ========== Network ========== */
 #network {
-    color: #00d9ff;
+    color: #ee1111;
 }
 
 #network.disconnected {
     color: #ff0055;
-    background: rgba(255, 0, 85, 0.15);
-    border: 2px solid rgba(255, 0, 85, 0.3);
-}
-
-#network:hover {
-    background: rgba(0, 217, 255, 0.15);
-    box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+    background: transparent;
 }
 
 /* ========== Audio ========== */
 #pulseaudio {
-    color: #ff006e;
+    color: #ff3333;
 }
 
 #pulseaudio.muted {
     color: #7a8ba3;
-    background: rgba(122, 139, 163, 0.1);
-}
-
-#pulseaudio:hover {
-    background: rgba(255, 0, 110, 0.15);
-    box-shadow: 0 0 10px rgba(255, 0, 110, 0.3);
+    background: transparent;
 }
 
 /* ========== System Tray ========== */
 #tray {
-    background: rgba(26, 35, 50, 0.6);
-    padding: 4px 10px;
+    background: transparent;
+    padding: 2px 8px;
 }
 
 #tray > .passive {
@@ -236,25 +231,24 @@ window#waybar.hidden {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background: rgba(255, 0, 110, 0.2);
+    background: rgba(255, 51, 51, 0.2);
     border-radius: 6px;
     animation: tray-attention 1s ease-in-out infinite;
 }
 
 @keyframes tray-attention {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+/* ========== Custom Widgets/Graphs ========== */
+#custom-cpu-graph,
+#custom-mem-graph {
+    font-family: "JetBrainsMono Nerd Font Mono", monospace;
+    font-size: 11px;
 }
 
 /* ========== Hover Effects ========== */
-#clock:hover,
-#battery:hover,
-#cpu:hover,
-#memory:hover,
-#temperature:hover,
-#backlight:hover,
-#network:hover,
-#pulseaudio:hover,
-#tray:hover {
-    transform: translateY(-2px);
-}
+/* Hover effects disabled */
+

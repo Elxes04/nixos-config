@@ -21,15 +21,15 @@ configuration {
 @theme "/dev/null"
 
 * {
-    bg: #0a0e1aee;
-    bg-alt: #13172bee;
-    bg-selected: #1a2332;
+    bg: #0a0a0aee;
+    bg-alt: #1a1a1aee;
+    bg-selected: #2a2a2a;
     
-    fg: #e6e6fa;
+    fg: #e0e0e0;
     fg-alt: #7a8ba3;
     
-    border: #00d9ff;
-    border-alt: #bd00ff;
+    border: #ee1111;
+    border-alt: #cc0000;
     
     background-color: @bg;
     text-color: @fg;

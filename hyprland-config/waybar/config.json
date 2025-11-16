@@ -1,12 +1,12 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 30,
-    "spacing": 4,
+    "height": 26,
+    "spacing": 3,
     
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery", "tray"],
+    "modules-right": ["custom/cpu-graph", "temperature", "custom/mem-graph", "battery", "pulseaudio", "tray", "backlight"],
 
     "hyprland/workspaces": {
         "disable-scroll": false,
@@ -32,7 +32,10 @@
     "hyprland/window": {
         "format": "{}",
         "max-length": 50,
-        "separate-outputs": true
+        "separate-outputs": true,
+        "rewrite": {
+            "": ""
+        }
     },
 
     "tray": {
@@ -46,18 +49,34 @@
     },
 
     "cpu": {
+        "interval": 2,
         "format": " {usage}%",
-        "tooltip": true
+        "format-alt": " {load}",
+        "tooltip": true,
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
     },
 
     "memory": {
-        "format": " {}%"
+        "interval": 5,
+        "format": " {}%",
+        "format-alt": " {used:0.1f}G/{total:0.1f}G",
+        "tooltip": true,
+        "tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G\nSwap: {swapUsed:0.1f}G / {swapTotal:0.1f}G",
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
     },
 
     "temperature": {
+        "interval": 2,
         "critical-threshold": 80,
         "format": "{icon} {temperatureC}°C",
-        "format-icons": ["", "", ""]
+        "format-icons": ["", "", ""],
+        "tooltip": true
     },
 
     "backlight": {
@@ -79,12 +98,12 @@
     },
 
     "network": {
-        "format-wifi": " {essid} ({signalStrength}%)",
-        "format-ethernet": " {ipaddr}/{cidr}",
-        "tooltip-format": " {ifname} via {gwaddr}",
-        "format-linked": " {ifname} (No IP)",
+        "format-wifi": " {signalStrength}%",
+        "format-ethernet": " ",
+        "tooltip-format": " {essid}\n{ifname} via {gwaddr}\n{ipaddr}/{cidr}",
+        "format-linked": " (No IP)",
         "format-disconnected": "⚠ Disconnected",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": " {essid}"
     },
 
     "pulseaudio": {
@@ -104,5 +123,17 @@
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
+    },
+
+    "custom/cpu-graph": {
+        "exec": "~/.config/waybar/scripts/cpu-graph.sh",
+        "return-type": "json",
+        "interval": 2
+    },
+
+    "custom/mem-graph": {
+        "exec": "~/.config/waybar/scripts/mem-graph.sh",
+        "return-type": "json",
+        "interval": 5
     }
 }

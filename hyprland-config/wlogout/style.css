@@ -1,0 +1,56 @@
+/* ThinkPad Theme for wlogout */
+
+* {
+    background-image: none;
+    box-shadow: none;
+}
+
+window {
+    background-color: rgba(10, 10, 10, 0.95);
+}
+
+button {
+    border-radius: 8px;
+    border: 2px solid rgba(238, 17, 17, 0.3);
+    background-color: rgba(26, 26, 26, 0.8);
+    color: #e0e0e0;
+    margin: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25%;
+    font-size: 18px;
+    font-weight: bold;
+    min-width: 200px;
+    min-height: 200px;
+}
+
+button:focus, button:active, button:hover {
+    background-color: rgba(238, 17, 17, 0.2);
+    border: 2px solid #ee1111;
+    box-shadow: 0 0 20px rgba(238, 17, 17, 0.5);
+    outline-style: none;
+}
+
+#lock {
+    background-image: image(url("/usr/share/wlogout/icons/lock.png"));
+}
+
+#logout {
+    background-image: image(url("/usr/share/wlogout/icons/logout.png"));
+}
+
+#suspend {
+    background-image: image(url("/usr/share/wlogout/icons/suspend.png"));
+}
+
+#hibernate {
+    background-image: image(url("/usr/share/wlogout/icons/hibernate.png"));
+}
+
+#shutdown {
+    background-image: image(url("/usr/share/wlogout/icons/shutdown.png"));
+}
+
+#reboot {
+    background-image: image(url("/usr/share/wlogout/icons/reboot.png"));
+}
