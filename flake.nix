@@ -2,11 +2,11 @@
   description = "💻 Elxes NixOS Configuration — Modular system and user setup using flakes";
 
   inputs = {
-    # Main Nix package source
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    # Main Nix package source (unstable channel)
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Home Manager (for user-level config)
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 

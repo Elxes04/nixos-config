@@ -85,7 +85,7 @@
     extraPackages = with pkgs; [
       intel-media-driver  # LIBVA_DRIVER_NAME=iHD
       intel-vaapi-driver  # LIBVA_DRIVER_NAME=i965 (older but sometimes better)
-      vaapiVdpau
+      libva-vdpau-driver
       libvdpau-va-gl
       intel-compute-runtime # OpenCL support
     ];

@@ -15,8 +15,12 @@
   # Program configurations
   programs.git = {
     enable = true;
-    userName = "Elxes";
-    userEmail = "elxes@example.com";
+    settings = {
+      user = {
+        name = "Elxes";
+        email = "elxes@example.com";
+      };
+    };
   };
 
   programs.zsh.enable = true;
