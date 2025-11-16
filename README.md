@@ -58,8 +58,9 @@ This configuration includes a comprehensive set of applications and tools:
 
 ### 🖥️ **Desktop Environment**
 - **GNOME** - Desktop environment
-- **Plasma** - Desktop Enviroment
-- **XFCE** - Desktop Enviroment
+- **Plasma** - Desktop Environment
+- **XFCE** - Desktop Environment
+- **Hyprland** - Tiling Wayland compositor with ThinkPad theme
 - **PipeWire** - Audio system
 - **Flatpak** - Application distribution
 
@@ -81,6 +82,17 @@ nixos/
 ├── 📄 flake.nix              # Main flake configuration
 ├── 📁 hosts/                 # Host-specific configurations
 │   └── nixos.nix            # Main host config
+├── 📁 hyprland-config/       # Hyprland window manager setup
+│   ├── hyprland/            # Hyprland configs
+│   ├── waybar/              # Status bar with custom graphs
+│   ├── dunst/               # Notifications
+│   ├── rofi/                # App launcher
+│   ├── kitty/               # Terminal
+│   ├── swaylock/            # Screen locker
+│   ├── wlogout/             # Logout menu
+│   ├── hyprpaper/           # Wallpaper daemon
+│   ├── setup.sh             # Auto-setup script
+│   └── README.md            # Hyprland documentation
 ├── 📁 modules/               # Modular configurations
 │   ├── 📁 apps/             # Core applications
 │   ├── 📁 creative/         # Creative software
@@ -89,6 +101,11 @@ nixos/
 │   ├── 📁 games/            # Gaming applications
 │   ├── 📁 tools/            # System utilities
 │   ├── 📁 desktop/          # Desktop environment
+│   ├── 📁 desktop-environments/ # DE configurations
+│   │   ├── gnome.nix
+│   │   ├── plasma.nix
+│   │   ├── xfce.nix
+│   │   └── hyprland.nix     # Hyprland system packages
 │   ├── 📁 hardware/         # Hardware-specific configs
 │   │   ├── 📁 graphics-cards/
 │   │   │   ├── intel/
@@ -109,9 +126,10 @@ nixos/
 - ✅ **Complete Setup** - All essential applications included
 - ✅ **Modular Design** - Each app in its own file
 - ✅ **Hardware Support** - Pre-configured modules for various WiFi cards and GPUs
+- ✅ **Multiple Desktop Environments** - GNOME, Plasma, XFCE, and Hyprland
+- ✅ **Hyprland Configuration** - Complete tiling WM setup with ThinkPad theme
 - ✅ **Flakes Support** - Reproducible builds
 - ✅ **Home Manager** - User-level configuration
-- ✅ **GNOME Desktop** - Modern desktop environment
 - ✅ **English Codebase** - Clean, documented code
 
 ## 🛠️ Customization
@@ -170,12 +188,45 @@ See `modules/hardware/README.md` for detailed hardware documentation.
    sudo nixos-rebuild switch --flake .#nixos
    ```
 
+## 🎯 Philosophy
+
 ### Removing Modules
 
 Simply remove the import line from `hosts/nixos.nix` and rebuild.
 
+## 🎨 Hyprland Setup
 
-## 🎯 Philosophy
+This repository includes a complete **Hyprland** configuration with a ThinkPad-inspired theme.
+
+### Features
+- � **ThinkPad Classic Theme** - Black and red color scheme
+- 📊 **System Graphs** - Real-time CPU and memory usage bars
+- ✨ **Modern Effects** - Cursor trails, smooth animations, blur effects
+- 🔧 **Complete Toolset** - Waybar, Rofi, Dunst, Kitty, all themed consistently
+- 📱 **Gesture Support** - 3-finger swipe to change workspaces
+- 🌙 **Night Light** - Automatic color temperature adjustment
+- 🖼️ **Smart UI** - Auto-hiding elements, borderless design
+
+### Quick Setup
+```bash
+# Enable Hyprland in hosts/nixos.nix
+imports = [
+  ../modules/desktop-environments/hyprland.nix
+];
+
+# Run the setup script
+cd hyprland-config
+./setup.sh
+
+# Rebuild system
+sudo nixos-rebuild switch --flake .#nixos
+
+# Select Hyprland at login screen
+```
+
+For detailed configuration and keybindings, see [`hyprland-config/README.md`](hyprland-config/README.md).
+
+## 🛠️ Customization
 
 This configuration follows these principles:
 
