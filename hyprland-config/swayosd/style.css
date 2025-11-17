@@ -1,0 +1,49 @@
+/* SwayOSD ThinkPad Theme */
+
+window {
+    background: rgba(0, 0, 0, 0.9);
+    border: 3px solid #ee1111;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+#container {
+    margin: 16px;
+}
+
+progressbar,
+image {
+    color: #ee1111;
+}
+
+progressbar {
+    background: rgba(238, 17, 17, 0.2);
+    border: 2px solid #ee1111;
+    border-radius: 8px;
+    min-height: 24px;
+}
+
+trough {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    min-height: 20px;
+}
+
+progress {
+    background: linear-gradient(90deg, #ee1111, #ff3333);
+    border-radius: 6px;
+    min-height: 20px;
+}
+
+image {
+    margin-right: 16px;
+    min-width: 48px;
+    min-height: 48px;
+}
+
+label {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 8px;
+}

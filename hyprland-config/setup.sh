@@ -13,6 +13,7 @@ DUNST_DIR="$HOME/.config/dunst"
 ROFI_DIR="$HOME/.config/rofi"
 KITTY_DIR="$HOME/.config/kitty"
 SWAYLOCK_DIR="$HOME/.config/swaylock"
+SWAYOSD_DIR="$HOME/.config/swayosd"
 
 echo "🚀 Setting up Hyprland configuration..."
 
@@ -24,6 +25,7 @@ mkdir -p "$DUNST_DIR"
 mkdir -p "$ROFI_DIR"
 mkdir -p "$KITTY_DIR"
 mkdir -p "$SWAYLOCK_DIR"
+mkdir -p "$SWAYOSD_DIR"
 mkdir -p "$HOME/Pictures/Wallpapers"
 mkdir -p "$HOME/Pictures/Screenshots"
 mkdir -p "$HOME/Videos"
@@ -66,6 +68,10 @@ ln -sf "$CONFIG_DIR/kitty/kitty.conf" "$KITTY_DIR/kitty.conf"
 # Create symlinks for Swaylock
 echo "🔗 Creating symlinks for Swaylock..."
 ln -sf "$CONFIG_DIR/swaylock/config" "$SWAYLOCK_DIR/config"
+
+# Create symlinks for SwayOSD
+echo "🔗 Creating symlinks for SwayOSD..."
+ln -sf "$CONFIG_DIR/swayosd/style.css" "$SWAYOSD_DIR/style.css"
 
 echo "✅ Configuration setup complete!"
 echo ""

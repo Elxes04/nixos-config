@@ -24,6 +24,7 @@
     # Notification daemon
     dunst               # Or mako
     libnotify           # For notify-send
+    swayosd             # OSD for volume/brightness
     
     # App launcher
     rofi                # Application launcher (supports Wayland)
