@@ -1,6 +1,6 @@
 .PHONY: help switch test boot update check clean gc optimize fmt
 
-HOST ?= thinkpad-x380
+HOST ?= nixos
 
 help:
 	@echo "NixOS Configuration Management"
@@ -17,7 +17,7 @@ help:
 	@echo "  make fmt          - Format nix files"
 	@echo ""
 	@echo "Options:"
-	@echo "  HOST=<name>       - Specify host (default: thinkpad-x380)"
+	@echo "  HOST=<name>       - Specify host (default: nixos)"
 
 switch:
 	sudo nixos-rebuild switch --flake .#$(HOST)

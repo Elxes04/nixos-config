@@ -2,7 +2,7 @@
 
 {
   # Hostname
-  networking.hostName = "thinkpad-x380";
+  networking.hostName = "nixos";
 
   # Enable flakes and nix command
   nix = {

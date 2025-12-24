@@ -29,41 +29,23 @@
     in
     {
       nixosConfigurations = {
-        thinkpad-x380 = nixpkgs.lib.nixosSystem {
+        nixos = nixpkgs.lib.nixosSystem {
           inherit system;
-          
           specialArgs = { inherit inputs; };
-          
           modules = [
-            # Overlay for unstable
             ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
-            
-            # Hardware configuration
             ./hardware-configuration.nix
-            
-            # Host configuration
-            ./hosts/thinkpad-x380/configuration.nix
-            
-            # System modules
+            ./hosts/nixos/configuration.nix
             ./modules/system/boot.nix
             ./modules/system/locale.nix
             ./modules/system/networking.nix
             ./modules/system/users.nix
             ./modules/system/qt.nix
-            # (Stylix removed)
-            
-            # Desktop environment
             ./modules/desktop/plasma.nix
-            
-            # Games
             ./modules/games/minecraft.nix
-            
-            # Packages by category
             ./modules/packages/gaming.nix
             ./modules/packages/development.nix
             ./modules/packages/desktop-apps.nix
-            
-            # Home Manager
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

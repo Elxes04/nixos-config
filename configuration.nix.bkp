@@ -9,7 +9,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "thinkpad-x380"; # Nome del PC
+  networking.hostName = "nixos"; # Nome del PC
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Rome";

@@ -78,9 +78,9 @@
       vim = "nvim";
 
       # Nix shortcuts
-      nrs = "sudo nixos-rebuild switch --flake .#thinkpad-x380";
-      nrt = "sudo nixos-rebuild test --flake .#thinkpad-x380";
-      nrb = "sudo nixos-rebuild boot --flake .#thinkpad-x380";
+      nrs = "sudo nixos-rebuild switch --flake .#nixos";
+      nrt = "sudo nixos-rebuild test --flake .#nixos";
+      nrb = "sudo nixos-rebuild boot --flake .#nixos";
       nfu = "nix flake update";
       nfc = "nix flake check";
       ncg = "nix-collect-garbage -d";
