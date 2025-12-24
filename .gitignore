@@ -1,0 +1,24 @@
+# Nix build outputs
+result
+result-*
+
+# Hardware configuration backup
+hardware-configuration.nix.backup
+
+# Editor
+.vscode/
+.idea/
+docs/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Old configurations
+*.backup
+*.old
+configuration.nix.backup
+hardware-configuration.nix
