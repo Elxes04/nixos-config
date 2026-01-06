@@ -30,6 +30,7 @@
     pkgs.unstable.spotify
     pkgs.unstable.discord
     pkgs.unstable.telegram-desktop
+    pkgs.unstable.amnezia-vpn
     pkgs.libreoffice-qt
     pkgs.hunspell
     pkgs.hunspellDicts.it_IT

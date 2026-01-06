@@ -6,9 +6,8 @@
     
     # Firewall configuration
     firewall = {
-      # Disable the built-in NixOS firewall while testing
       enable = false;
-      allowedTCPPorts = [ 22 18363 ];
+      allowedTCPPorts = [ 22 2222 18363 ];
       allowedUDPPorts = [ ];
     };
   };
@@ -23,5 +22,13 @@
       addresses = true;
       workstation = true;
     };
+  };
+
+  # Enable OpenSSH server
+  services.openssh.enable = true;
+  services.openssh.settings = {
+    PermitRootLogin = "yes";
+    PasswordAuthentication = true;
+    KbdInteractiveAuthentication = false;
   };
 }
