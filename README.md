@@ -7,7 +7,7 @@ This repository contains a NixOS configuration using flakes for the host `nixos`
 - hardware-configuration.nix: Auto-generated hardware config
 - hosts/nixos/configuration.nix: Host-specific settings
 - modules/system/*: System modules (boot, locale, networking, users, qt)
-- modules/desktop/plasma.nix: KDE Plasma and SDDM setup
+- modules/desktop/cosmic.nix: Cosmic DE
 - modules/packages/*: Package groups (gaming, development, desktop-apps)
 - home/elxes.nix: Home Manager configuration for user `elxes`
 - Makefile: Convenience targets

@@ -41,7 +41,9 @@
             ./modules/system/networking.nix
             ./modules/system/users.nix
             ./modules/system/qt.nix
-            ./modules/desktop/plasma.nix
+            ./modules/system/filesystems.nix
+            ./modules/system/fonts.nix
+            ./modules/desktop/cosmic.nix
             ./modules/games/minecraft.nix
             ./modules/packages/gaming.nix
             ./modules/packages/development.nix

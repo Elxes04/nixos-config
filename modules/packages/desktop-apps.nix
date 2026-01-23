@@ -1,59 +1,46 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs.unstable.kdePackages; [
-    # KDE Applications
-    discover
-    kcalc
-    kcharselect
-    kclock
-    kcolorchooser
-    kolourpaint
-    ksystemlog
-    sddm-kcm
-    kate
-    konsole
-    dolphin
-    ark
-    spectacle
-    okular
-    gwenview
-    elisa
-    isoimagewriter
-    partitionmanager
+  environment.systemPackages = with pkgs; [
+    # COSMIC Applications (from unstable)
+    unstable.cosmic-files
+    unstable.cosmic-settings
 
-    # Non-KDE applications
-    pkgs.kdiff3
-    pkgs.firefox
-    pkgs.vlc
-    pkgs.unstable.mpv
-    pkgs.unstable.spotify
-    pkgs.unstable.discord
-    pkgs.unstable.telegram-desktop
-    pkgs.unstable.amnezia-vpn
-    pkgs.libreoffice-qt
-    pkgs.hunspell
-    pkgs.hunspellDicts.it_IT
-    pkgs.hunspellDicts.en_US
-    pkgs.hardinfo2
-    pkgs.gparted
-    pkgs.bleachbit
-    pkgs.qbittorrent
-    pkgs.filezilla
-    pkgs.p7zip
-    pkgs.unzip
-    pkgs.unrar
-    pkgs.flameshot
-    pkgs.obs-studio
-    pkgs.wayland-utils
-    pkgs.wl-clipboard
-    pkgs.xclip
-    pkgs.unstable.syncthing
-    pkgs.keepassxc
-    pkgs.unstable.gimp
-    pkgs.unstable.inkscape
-    pkgs.iotop
-    pkgs.iftop
-    pkgs.nethogs
+    # Non-COSMIC applications
+    kdiff3
+    firefox
+    vlc
+    unstable.mpv
+    unstable.spotify
+    unstable.discord
+    unstable.telegram-desktop
+    unstable.amnezia-vpn
+    libreoffice-qt
+    hunspell
+    hunspellDicts.it_IT
+    hunspellDicts.en_US
+    hardinfo2
+    gparted
+    bleachbit
+    mission-center
+    qbittorrent
+    filezilla
+    p7zip
+    unzip
+    unrar
+    flameshot
+    obs-studio
+    wayland-utils
+    wl-clipboard
+    xclip
+    unstable.syncthing
+    keepassxc
+    unstable.gimp
+    unstable.inkscape
+    virt-manager
+    iotop
+    iftop
+    nethogs
   ];
 }
+
