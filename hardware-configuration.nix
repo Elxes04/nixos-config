@@ -16,11 +16,13 @@
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/b4bad890-fe10-4e2e-9a28-e22caa156e10";
       fsType = "btrfs";
+      options = [ "x-gvfs-show" "x-gvfs-name=Root" ];
     };
 
   fileSystems."/home" =
     { device = "/dev/disk/by-uuid/48a51772-cde8-44cb-89d9-af398bd1abcf";
       fsType = "btrfs";
+      options = [ "x-gvfs-show" "x-gvfs-name=Home" ];
     };
 
   fileSystems."/boot" =

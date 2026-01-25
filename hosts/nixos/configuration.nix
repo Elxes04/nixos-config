@@ -4,6 +4,13 @@
   # Hostname
   networking.hostName = "nixos";
 
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 100;
+  };
+
+
   # Enable flakes and nix command
   nix = {
     settings = {

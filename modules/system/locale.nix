@@ -4,7 +4,7 @@
   time.timeZone = "Europe/Rome";
 
   i18n = {
-    defaultLocale = "it_IT.UTF-8";
+    defaultLocale = "en_US.UTF-8";
     
     extraLocaleSettings = {
       LC_ADDRESS = "it_IT.UTF-8";

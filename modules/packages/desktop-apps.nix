@@ -7,7 +7,6 @@
     unstable.cosmic-settings
 
     # Non-COSMIC applications
-    kdiff3
     firefox
     vlc
     unstable.mpv
@@ -15,7 +14,7 @@
     unstable.discord
     unstable.telegram-desktop
     unstable.amnezia-vpn
-    libreoffice-qt
+    libreoffice-fresh
     hunspell
     hunspellDicts.it_IT
     hunspellDicts.en_US
@@ -28,6 +27,9 @@
     p7zip
     unzip
     unrar
+    file-roller
+    gnome-disk-utility
+    resources
     flameshot
     obs-studio
     wayland-utils
