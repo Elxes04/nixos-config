@@ -39,6 +39,7 @@
     protonup-qt
     wine
     winetricks
+    cabextract
     
     # Vulkan
     vulkan-tools

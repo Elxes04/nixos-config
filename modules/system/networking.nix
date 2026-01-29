@@ -23,6 +23,10 @@
     };
   };
 
+  boot.kernel.sysctl = {
+    "net.ipv4.ip_unprivileged_port_start" = 443;
+  };
+
   services.avahi = {
     enable = true;
     nssmdns4 = true;
