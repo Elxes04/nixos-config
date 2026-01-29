@@ -44,6 +44,7 @@
             ./modules/system/filesystems.nix
             ./modules/system/fonts.nix
             ./modules/desktop/cosmic.nix
+            ./modules/desktop/examine.nix
             ./modules/games/minecraft.nix
             ./modules/packages/gaming.nix
             ./modules/packages/development.nix
