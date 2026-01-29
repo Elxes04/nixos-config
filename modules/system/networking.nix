@@ -3,17 +3,26 @@
 {
   networking = {
     networkmanager.enable = true;
-    
-    # Firewall configuration
+
+    enableIPv6 = false;
+
+    extraHosts = ''
+      127.0.0.1 public-ubiservices.ubi.com
+    '';
+
     firewall = {
-      enable = false;
-      allowedTCPPorts = [ 22 2222 18363 ];
+      enable = true;
+
+      allowedTCPPorts = [
+        22
+        2222
+        18363
+      ];
+
       allowedUDPPorts = [ ];
     };
   };
 
-
-  # Enable avahi for network discovery
   services.avahi = {
     enable = true;
     nssmdns4 = true;
@@ -24,11 +33,12 @@
     };
   };
 
-  # Enable OpenSSH server
-  services.openssh.enable = true;
-  services.openssh.settings = {
-    PermitRootLogin = "yes";
-    PasswordAuthentication = true;
-    KbdInteractiveAuthentication = false;
+  services.openssh = {
+    enable = true;
+    settings = {
+      PermitRootLogin = "yes";
+      PasswordAuthentication = true;
+      KbdInteractiveAuthentication = false;
+    };
   };
 }
