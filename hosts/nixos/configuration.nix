@@ -28,6 +28,22 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  hardware.enableRedistributableFirmware = true;
+
+  # Ensure Intel iGPU kernel module is available early
+  boot.kernelModules = [ "kvm-intel" "i915" ];
+
+  # Enable OpenGL / DRI support and prefer Intel driver (modesetting is used by default)
+  hardware.opengl = {
+    enable = true;
+  };
+
+  # For X11/Wayland desktop drivers — include intel driver (modesetting is preferred for modern setups)
+  services.xserver = {
+    enable = true;
+    videoDrivers = [ "intel" ];
+  };
+
   # System version
   system.stateVersion = "25.05";
 }
