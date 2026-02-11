@@ -2,11 +2,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    # COSMIC Applications (from unstable)
-    unstable.cosmic-files
-    unstable.cosmic-settings
-
-    # Non-COSMIC applications
     firefox
     vlc
     unstable.mpv

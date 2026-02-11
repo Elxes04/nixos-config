@@ -34,7 +34,7 @@
   boot.kernelModules = [ "kvm-intel" "i915" ];
 
   # Enable OpenGL / DRI support and prefer Intel driver (modesetting is used by default)
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
   };
 
