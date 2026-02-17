@@ -3,6 +3,7 @@
 {
   # Enable Plasma
   services.desktopManager.plasma6.enable = true;
+  services.flatpak.enable = true;
 
 # Default display manager for Plasma
 services.displayManager.sddm = {

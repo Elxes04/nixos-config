@@ -36,6 +36,10 @@
   # Enable OpenGL / DRI support and prefer Intel driver (modesetting is used by default)
   hardware.graphics = {
     enable = true;
+    enable32Bit = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+    ];
   };
 
   # For X11/Wayland desktop drivers — include intel driver (modesetting is preferred for modern setups)

@@ -13,13 +13,7 @@
     gamemode.enable = true;
   };
 
-  # Hardware acceleration and drivers
-  hardware = {
-    graphics = {
-      enable = true;
-      enable32Bit = true;
-    };
-  };
+  # Hardware acceleration and drivers (configured in main configuration.nix)
 
   # Gaming packages (many from unstable for latest versions)
   environment.systemPackages = with pkgs; [

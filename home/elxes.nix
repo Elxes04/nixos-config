@@ -97,7 +97,7 @@
       nrb = "sudo nixos-rebuild boot --flake .#nixos";
       nfu = "nix flake update";
       nfc = "nix flake check";
-      ncg = "nix-collect-garbage -d";
+      ncg = "sudo nix-collect-garbage -d";
 
       # Git shortcuts
       g = "git";
