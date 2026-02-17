@@ -39,13 +39,18 @@
     enable32Bit = true;
     extraPackages = with pkgs; [
       intel-media-driver
+      vulkan-loader
+      vulkan-tools
     ];
   };
 
-  # For X11/Wayland desktop drivers — include intel driver (modesetting is preferred for modern setups)
   services.xserver = {
     enable = true;
     videoDrivers = [ "intel" ];
+    deviceSection = ''
+      Option "DRI" "3"
+      Option "TearFree" "true"
+    '';
   };
 
   # System version

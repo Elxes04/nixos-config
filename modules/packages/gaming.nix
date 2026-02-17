@@ -39,6 +39,9 @@
     vulkan-tools
     vulkan-loader
     
+    # Vulkan 32-bit support for games
+    pkgsi686Linux.vulkan-loader
+    
     # Performance monitoring
     unstable.cpu-x
     htop
