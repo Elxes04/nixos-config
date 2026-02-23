@@ -34,6 +34,23 @@ in
         runAsRoot = true;
         swtpm.enable = true;
       };
+      onBoot = "start";
+      networks = {
+        default = {
+          definition = pkgs.writeText "default.xml" ''
+            <network>
+              <name>default</name>
+              <forward mode='nat'/>
+              <bridge name='virbr0' stp='on' delay='0'/>
+              <ip address='192.168.122.1' netmask='255.255.255.0'>
+                <dhcp>
+                  <range start='192.168.122.2' end='192.168.122.254'/>
+                </dhcp>
+              </ip>
+            </network>
+          '';
+        };
+      };
     };
   };
 
