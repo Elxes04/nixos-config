@@ -35,28 +35,31 @@ in
         swtpm.enable = true;
       };
       onBoot = "start";
-      networks = {
-        default = {
-          definition = pkgs.writeText "default.xml" ''
-            <network>
-              <name>default</name>
-              <forward mode='nat'/>
-              <bridge name='virbr0' stp='on' delay='0'/>
-              <ip address='192.168.122.1' netmask='255.255.255.0'>
-                <dhcp>
-                  <range start='192.168.122.2' end='192.168.122.254'/>
-                </dhcp>
-              </ip>
-            </network>
-          '';
-        };
-      };
     };
   };
 
   # Enable virt-manager program
   programs.virt-manager = {
     enable = true;
+  };
+
+  # Auto-start libvirt default network
+  systemd.services.libvirt-network-autostart = {
+    description = "Auto-start libvirt default network";
+    after = [ "libvirtd.service" ];
+    wants = [ "libvirtd.service" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = "yes";
+    };
+    script = ''
+      set -e
+      # Give libvirtd time to start
+      sleep 2
+      # Start default network if it exists
+      ${pkgs.libvirt}/bin/virsh net-list --all | grep -q "default" && ${pkgs.libvirt}/bin/virsh net-start default 2>/dev/null || true
+    '';
   };
 
   # System-level development packages
@@ -70,9 +73,9 @@ in
     
     # Programming languages
     # Python
-    unstable.python312
-    unstable.python312Packages.pip
-    unstable.python312Packages.virtualenv
+    python312
+    python312Packages.pip
+    python312Packages.virtualenv
     unstable.uv
     
     # Node.js
@@ -123,7 +126,7 @@ in
   # Enable documentation
   documentation = {
     enable = true;
-    dev.enable = true;
+    dev.enable = false;
     man.enable = true;
   };
   

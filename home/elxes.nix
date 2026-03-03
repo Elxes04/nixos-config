@@ -2,7 +2,7 @@
 
 {
   # Home Manager state version
-  home.stateVersion = "25.05";
+  home.stateVersion = "25.11";
 
 
   home.packages = with pkgs; [
@@ -25,8 +25,8 @@
     enable = true;
     settings = {
       user = {
-        name = "elxes";
-        email = "your.email@example.com";
+        name = "Elxes04";
+        email = "124086168+Elxes04@users.noreply.github.com";
       };
       init = { defaultBranch = "main"; };
       pull = { rebase = false; };

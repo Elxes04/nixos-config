@@ -33,7 +33,6 @@
     unstable.syncthing
     keepassxc
     unstable.gimp
-    unstable.inkscape
     virt-manager
     iotop
     iftop
