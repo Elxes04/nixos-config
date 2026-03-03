@@ -39,7 +39,7 @@
             ./modules/system/qt.nix
             ./modules/system/filesystems.nix
             ./modules/system/fonts.nix
-            ./modules/desktop/plasma.nix
+            ./modules/desktop/gnome.nix
             ./modules/games/minecraft.nix
             ./modules/packages/gaming.nix
             ./modules/packages/development.nix
