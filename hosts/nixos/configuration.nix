@@ -28,6 +28,8 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  services.flatpak.enable = true;
+
   hardware.enableRedistributableFirmware = true;
 
   # Ensure Intel iGPU kernel module is available early

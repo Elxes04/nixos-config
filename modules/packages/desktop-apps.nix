@@ -5,16 +5,14 @@
     firefox
     vlc
     unstable.mpv
-    unstable.spotify
     unstable.discord
     unstable.telegram-desktop
-    unstable.amnezia-vpn
     libreoffice-fresh
     hunspell
     hunspellDicts.it_IT
     hunspellDicts.en_US
-    hardinfo2
     gparted
+    gnome-tweaks
     bleachbit
     mission-center
     qbittorrent
@@ -24,7 +22,7 @@
     unrar
     file-roller
     gnome-disk-utility
-    resources
+    gnome-software
     flameshot
     obs-studio
     wayland-utils

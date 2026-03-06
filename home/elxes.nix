@@ -186,5 +186,5 @@
     };
   };
 
-  # Remove HM Qt overrides to avoid conflicts with KDE session
+
 }
