@@ -50,6 +50,11 @@
     vimAlias = true;
   };
 
+  programs.nix-index = {
+    enable = true;
+    enableBashIntegration = true;
+  };
+
   programs.starship = {
     enable = true;
     enableZshIntegration = true;

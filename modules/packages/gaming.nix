@@ -44,7 +44,6 @@
     
     # Performance monitoring
     unstable.cpu-x
-    htop
     btop
   ];
 

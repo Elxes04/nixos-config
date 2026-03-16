@@ -9,9 +9,14 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nix-flatpak, ... }@inputs:
     let
       system = "x86_64-linux";
       
@@ -27,23 +32,35 @@
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           inherit system;
+
           specialArgs = { inherit inputs; };
+
           modules = [
             ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+
             ./hardware-configuration.nix
             ./hosts/nixos/configuration.nix
+
             ./modules/system/boot.nix
             ./modules/system/locale.nix
             ./modules/system/networking.nix
             ./modules/system/users.nix
             ./modules/system/qt.nix
             ./modules/system/filesystems.nix
+            ./modules/system/testvm.nix
             ./modules/system/fonts.nix
+
             ./modules/desktop/gnome.nix
             ./modules/games/minecraft.nix
+
+            # Flatpak module
+            nix-flatpak.nixosModules.nix-flatpak
+
             ./modules/packages/gaming.nix
             ./modules/packages/development.nix
+            ./modules/packages/flatpaks.nix
             ./modules/packages/desktop-apps.nix
+
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

@@ -117,6 +117,7 @@ in
     # System tools
     tmux
     screen
+    nix-index
     
     # Documentation
     man-pages

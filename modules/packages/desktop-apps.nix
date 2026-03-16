@@ -35,6 +35,7 @@
     iotop
     iftop
     nethogs
+    rustdesk
   ];
 }
 
