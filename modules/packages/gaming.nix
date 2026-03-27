@@ -13,6 +13,11 @@
     gamemode.enable = true;
   };
 
+
+  services.udev.packages = with pkgs; [
+    game-devices-udev-rules
+  ];
+  
   # Hardware acceleration and drivers (configured in main configuration.nix)
 
   # Gaming packages (many from unstable for latest versions)

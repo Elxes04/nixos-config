@@ -1,6 +1,6 @@
 # NixOS Configuration (Flakes)
 
-This repository contains a NixOS configuration using flakes for the host `nixos`. It includes system modules, KDE Plasma setup, and Home Manager integration.
+This repository contains a NixOS configuration using flakes for the host `nixos`. It includes system modules, GNOME Desktop, and Home Manager integration.
 
 ## Structure
 - flake.nix: Flake entry point and inputs
@@ -54,7 +54,7 @@ You can use the Makefile targets or run the commands directly. Replace the host 
 
 ## Notes
 - `system.stateVersion` should reflect the version originally installed to avoid unintended migrations.
-- KDE Plasma is configured via modules/desktop/plasma.nix. SDDM Wayland can be toggled in the same file if needed.
+-  GNOME is configured via modules/desktop/gnome.nix. SDDM Wayland can be toggled in the same file if needed.
 
 ## Troubleshooting
 - If a rebuild fails, run with `--show-trace` for detailed errors.

@@ -16,8 +16,6 @@
     "com.github.tchx84.Flatseal"
     "com.mattjakeman.ExtensionManager"
     "com.termius.Termius"
-    "fr.handbrake.ghb"
-    "io.gitlab.librewolf-community"
     "org.keepassxc.KeePassXC"
     "org.localsend.localsend_app"
     "org.shotcut.Shotcut"

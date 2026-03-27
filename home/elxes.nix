@@ -13,7 +13,6 @@
     unstable.lazydocker
     unstable.dive
     unstable.postman
-    unstable.insomnia
     unstable.ripgrep
     unstable.fd
     unstable.tldr
@@ -182,14 +181,5 @@
       bind r source-file ~/.config/tmux/tmux.conf
     '';
   };
-
-  programs.htop = {
-    enable = true;
-    settings = {
-      tree_view = true;
-      show_program_path = false;
-    };
-  };
-
 
 }

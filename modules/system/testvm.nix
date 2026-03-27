@@ -9,8 +9,8 @@
 
   virtualisation.vmVariant = {
     virtualisation = {
-      memorySize = 4096;
-      cores = 3;
+      memorySize = 2048;
+      cores = 1;
     };
   };
 }

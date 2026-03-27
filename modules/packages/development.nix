@@ -88,9 +88,6 @@ in
     # Rust
     unstable.rustup
     
-    # Go
-    unstable.go
-    unstable.gopls
     
     # C/C++
     gcc

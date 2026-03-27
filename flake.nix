@@ -45,7 +45,6 @@
             ./modules/system/locale.nix
             ./modules/system/networking.nix
             ./modules/system/users.nix
-            ./modules/system/qt.nix
             ./modules/system/filesystems.nix
             ./modules/system/testvm.nix
             ./modules/system/fonts.nix

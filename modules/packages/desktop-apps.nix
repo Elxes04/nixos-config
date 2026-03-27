@@ -3,7 +3,6 @@
 {
   environment.systemPackages = with pkgs; [
     firefox
-    vlc
     unstable.mpv
     unstable.discord
     unstable.telegram-desktop
@@ -28,13 +27,9 @@
     wayland-utils
     wl-clipboard
     xclip
-    unstable.syncthing
     keepassxc
     unstable.gimp
     virt-manager
-    iotop
-    iftop
-    nethogs
     rustdesk
   ];
 }
