@@ -80,8 +80,7 @@ in
     
     # Node.js
     unstable.nodejs_22
-    unstable.nodePackages.npm
-    unstable.nodePackages.pnpm
+    unstable.pnpm
     unstable.yarn
     unstable.bun
     

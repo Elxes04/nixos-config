@@ -51,7 +51,6 @@
 
             ./modules/desktop/gnome.nix
             ./modules/games/minecraft.nix
-            ./modules/games/beammp.nix
 
             # Flatpak module
             nix-flatpak.nixosModules.nix-flatpak
