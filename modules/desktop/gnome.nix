@@ -10,4 +10,8 @@
    services.gnome.core-developer-tools.enable = false;
 
    services.gnome.games.enable = false;
+
+   environment.systemPackages = with pkgs; [
+      gnomeExtensions.arcmenu
+   ];
 }

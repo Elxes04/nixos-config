@@ -31,7 +31,7 @@
   hardware.enableRedistributableFirmware = true;
 
   # Ensure Intel iGPU kernel module is available early
-  boot.kernelModules = [ "kvm-intel" "i915" ];
+  boot.kernelModules = [ "kvm-intel" "i915" "ntsync" ];
 
   # Enable OpenGL / DRI support and prefer Intel driver (modesetting is used by default)
   hardware.graphics = {
