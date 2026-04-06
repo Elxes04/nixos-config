@@ -13,5 +13,10 @@
 
    environment.systemPackages = with pkgs; [
       gnomeExtensions.arcmenu
+      gnomeExtensions.appindicator
+      gnomeExtensions.blur-my-shell
+      gnomeExtensions.dash-to-dock
+      gnomeExtensions.system-monitor
+      gnomeExtensions.xwayland-indicator
    ];
 }
