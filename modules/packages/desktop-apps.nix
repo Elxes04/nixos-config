@@ -31,6 +31,7 @@
     unstable.gimp
     virt-manager
     rustdesk
+    easyeffects
   ];
 }
 
