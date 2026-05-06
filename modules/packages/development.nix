@@ -84,10 +84,6 @@ in
     unstable.yarn
     unstable.bun
     
-    # Rust
-    unstable.rustup
-    
-    
     # C/C++
     gcc
     clang

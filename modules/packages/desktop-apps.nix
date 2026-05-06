@@ -43,7 +43,6 @@ in
     keepassxc
     unstable.gimp
     virt-manager
-    rustdesk
     easyeffects
     virt-viewer
   ];

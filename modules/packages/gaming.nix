@@ -23,21 +23,15 @@
   # Gaming packages (many from unstable for latest versions)
   environment.systemPackages = with pkgs; [
     # Launchers and platforms
-    unstable.lutris
     unstable.heroic
-    unstable.bottles
     
     # Emulators
-    unstable.dolphin-emu
     unstable.pcsx2
-    unstable.rpcs3
     
     # Tools
     unstable.mangohud
     unstable.goverlay
     protonup-qt
-    wine
-    winetricks
     cabextract
     
     # Vulkan

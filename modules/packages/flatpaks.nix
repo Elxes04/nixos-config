@@ -20,5 +20,6 @@
     "org.localsend.localsend_app"
     "org.shotcut.Shotcut"
     "org.vinegarhq.Sober"
+    "io.github.victoralvesf.aonsoku"
   ];
 }
