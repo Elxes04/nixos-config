@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 
+let
+  unstable = pkgs.unstable;
+in
 {
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
@@ -8,12 +11,12 @@
   services.gnome.core-developer-tools.enable = false;
   services.gnome.games.enable = false;
 
-  environment.systemPackages = with pkgs; [
-    unstable.gnomeExtensions.arcmenu
-    unstable.gnomeExtensions.appindicator
-    unstable.gnomeExtensions.blur-my-shell
-    unstable.gnomeExtensions.dash-to-dock
-    unstable.gnomeExtensions.system-monitor
-    unstable.gnomeExtensions.xwayland-indicator
+  environment.systemPackages = with unstable; [
+    gnomeExtensions.arcmenu
+    gnomeExtensions.appindicator
+    gnomeExtensions.blur-my-shell
+    gnomeExtensions.dash-to-dock
+    gnomeExtensions.system-monitor
+    gnomeExtensions.xwayland-indicator
   ];
 }

@@ -26,6 +26,7 @@
           inherit system;
           config.allowUnfree = true;
         };
+        gnome = final.unstable.gnome;
       };
 
       moduleGroups = {
