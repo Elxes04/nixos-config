@@ -1,15 +1,5 @@
 { config, pkgs, ... }:
 
-let
-  openjdk25-native = pkgs.openjdk25.overrideAttrs (old: {
-    pname = "openjdk25-native";
-
-    env = (old.env or {}) // {
-      NIX_CFLAGS_COMPILE = (old.env.NIX_CFLAGS_COMPILE or "") + " -O3 -march=native -mtune=native";
-      NIX_CXXFLAGS_COMPILE = (old.env.NIX_CXXFLAGS_COMPILE or "") + " -O3 -march=native -mtune=native";
-    };
-  });
-in
 {
   # Development services
   services = {
@@ -65,7 +55,6 @@ in
   # System-level development packages
   environment.systemPackages = with pkgs; [
     # Java
-    openjdk25-native
 
     # Version control
     git
@@ -73,9 +62,9 @@ in
     
     # Programming languages
     # Python
-    python312
-    python312Packages.pip
-    python312Packages.virtualenv
+    python314
+    python314Packages.pip
+    python314Packages.virtualenv
     unstable.uv
     
     # Node.js

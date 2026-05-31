@@ -45,6 +45,8 @@ in
     virt-manager
     easyeffects
     virt-viewer
+    alacritty
+    nautilus
   ];
 }
 

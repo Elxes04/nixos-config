@@ -1,0 +1,4 @@
+binds {
+    Mod+Shift+Escape { focus-excluded-window; }
+    Mod+Alt+T { spawn "alacritty"; }
+}
