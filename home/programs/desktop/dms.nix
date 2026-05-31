@@ -20,4 +20,24 @@
     text = builtins.readFile ./dms/outputs.kdl;
     force = true;
   };
+
+  xdg.configFile."niri/dms/alttab.kdl" = {
+    text = builtins.readFile ./dms/alttab.kdl;
+    force = true;
+  };
+
+  xdg.configFile."niri/dms/colors.kdl" = {
+    text = builtins.readFile ./dms/colors.kdl;
+    force = true;
+  };
+
+  xdg.configFile."niri/dms/layout.kdl" = {
+    text = builtins.readFile ./dms/layout.kdl;
+    force = true;
+  };
+
+  xdg.configFile."niri/dms/wpblur.kdl" = {
+    text = builtins.readFile ./dms/wpblur.kdl;
+    force = true;
+  };
 }
