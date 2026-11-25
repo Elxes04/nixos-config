@@ -18,6 +18,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Dux Greeter
+    dux-greeter = {
+      url = "github:duxlabs-dev/dux-greeter";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Home Manager
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
@@ -25,14 +31,10 @@
     };
 
     # Flatpak
-    nix-flatpak = {
-      url = "github:gmodena/nix-flatpak";
-    };
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
 
     # PrismLauncher
-    prismlauncher = {
-      url = "github:Diegiwg/PrismLauncher-Cracked";
-    };
+    prismlauncher.url = "github:Diegiwg/PrismLauncher-Cracked";
 
     # Google Antigravity
     antigravity-nix = {
@@ -48,6 +50,7 @@
     nix-flatpak,
     niri,
     dms,
+    dux-greeter,
     ...
   }@inputs:
     let
@@ -118,14 +121,16 @@
 
                 # Google Antigravity
                 inputs.antigravity-nix.packages.${pkgs.system}.default
-                inputs.antigravity-nix.packages.x86_64-linux.default
-                inputs.antigravity-nix.packages.x86_64-linux.google-antigravity-ide
-                inputs.antigravity-nix.packages.x86_64-linux.google-antigravity-cli
+                inputs.antigravity-nix.packages.${pkgs.system}.google-antigravity-ide
+                inputs.antigravity-nix.packages.${pkgs.system}.google-antigravity-cli
               ];
             })
 
             # Niri NixOS module
             niri.nixosModules.niri
+
+            # Dux Greeter NixOS module
+            dux-greeter.nixosModules.default
 
             # Hardware and host configuration
             ./hardware-configuration.nix

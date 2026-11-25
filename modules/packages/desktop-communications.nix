@@ -1,9 +1,11 @@
 { pkgs, ... }:
-with pkgs; [
-  unstable.discord
-  telegram-desktop
-  qbittorrent
-  session-desktop
-  thunderbird
 
-]
+{
+  environment.systemPackages = with pkgs; [
+    unstable.discord
+    telegram-desktop
+    qbittorrent
+    session-desktop
+    thunderbird
+  ];
+}

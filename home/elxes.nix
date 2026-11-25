@@ -25,6 +25,7 @@
     ./programs/cli/fzf.nix
     ./programs/cli/direnv.nix
     ./programs/cli/tmux.nix
+    ./programs/dev/java.nix
   ];
 
   # Home Manager state version

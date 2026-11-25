@@ -1,5 +1,11 @@
 { config, pkgs, ... }:
 
+let
+  meslo-lgs-fonts = pkgs.runCommand "meslo-lgs-fonts" { } ''
+    mkdir -p $out/share/fonts/truetype
+    cp -v ${../../fonts}/*.ttf $out/share/fonts/truetype/
+  '';
+in
 {
   fonts = {
     packages = with pkgs; [
@@ -14,6 +20,9 @@
       nerd-fonts.fira-code
       nerd-fonts.jetbrains-mono
       nerd-fonts.hack
+
+      # Custom fonts from local directory
+      meslo-lgs-fonts
     ];
 
     fontconfig.defaultFonts = {
@@ -21,14 +30,5 @@
       sansSerif = [ "Noto Sans" ];
       monospace = [ "FiraCode Nerd Font" ];
     };
-  };
-
-  # Custom fonts from local directory
-  system.userActivationScripts.installCustomFonts = {
-    text = ''
-      mkdir -p ~/.local/share/fonts
-      cp -v ${../../fonts}/*.ttf ~/.local/share/fonts/ 2>/dev/null || true
-      fc-cache -f ~/.local/share/fonts 2>/dev/null || true
-    '';
   };
 }

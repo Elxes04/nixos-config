@@ -10,4 +10,5 @@
   };
 
   hardware.enableRedistributableFirmware = true;
+  services.power-profiles-daemon.enable = true;
 }

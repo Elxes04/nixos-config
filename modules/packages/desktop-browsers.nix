@@ -1,4 +1,7 @@
 { pkgs, ... }:
-with pkgs; [
-  unstable.firefox
-]
+
+{
+  environment.systemPackages = with pkgs; [
+    unstable.firefox
+  ];
+}

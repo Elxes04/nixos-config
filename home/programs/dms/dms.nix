@@ -5,7 +5,6 @@
     enable = true;
 
     niri = {
-      enableSpawn = true;
       enableKeybinds = false;
 
       includes = {
