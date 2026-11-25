@@ -1,235 +1,61 @@
-# NixOS Configuration (Flakes)
+# NixOS config
 
-A declarative NixOS configuration using Flakes for reproducible system setup. Includes modular system configuration, Niri window manager, DMS display manager, and Home Manager with organized user programs.
+This is my NixOS flake for a desktop setup with Niri, Home Manager, and a few custom bits for development and day-to-day use.
 
-## 📁 Directory Structure
+The repo is organized around a few main pieces:
 
-```
-.
-├── flake.nix                                  # Flake entry point and inputs
-├── hardware-configuration.nix                 # Auto-generated hardware config
-├── hosts/
-│   └── nixos/configuration.nix               # Host-specific settings
-├── modules/
-│   ├── system/                                # System-level configuration
-│   │   ├── host.nix                          # Hostname and networking
-│   │   ├── nix.nix                           # Nix daemon settings
-│   │   ├── graphics.nix                      # GPU drivers (Intel, NVIDIA)
-│   │   ├── audio.nix                         # Audio (PulseAudio/PipeWire)
-│   │   ├── state-version.nix                 # NixOS version tracking
-│   │   ├── boot.nix                          # Boot configuration
-│   │   ├── locale.nix                        # Timezone and locale
-│   │   ├── networking.nix                    # Network configuration
-│   │   ├── users.nix                         # User management
-│   │   ├── filesystems.nix                   # Filesystem setup
-│   │   ├── fonts.nix                         # System fonts
-│   │   └── testvm.nix                        # VM-specific settings
-│   ├── desktop/                               # Desktop environment modules
-│   │   ├── niri.nix                          # Niri window manager (system)
-│   │   └── dms.nix                           # DMS display manager
-│   ├── games/
-│   │   └── minecraft.nix                     # Minecraft runtime setup
-│   └── packages/                              # Package groups
-│       ├── gaming.nix                        # Gaming packages
-│       ├── development.nix                   # Development tools
-│       ├── flatpaks.nix                      # Flatpak configuration
-│       └── desktop-apps.nix                  # Desktop applications
-├── home/
-│   ├── elxes.nix                             # Home Manager entry point
-│   └── programs/                              # Modular user programs
-│       ├── shell/
-│       │   ├── zsh.nix                       # Shell + aliases
-│       │   ├── starship.nix                  # Prompt configuration
-│       │   └── zoxide.nix                    # Directory jumper
-│       ├── dev/
-│       │   ├── git.nix                       # Git settings
-│       │   ├── neovim.nix                    # Text editor
-│       │   └── nix-index.nix                 # Nix package finder
-│       ├── cli/
-│       │   ├── bat.nix                       # Cat replacement
-│       │   ├── eza.nix                       # ls replacement
-│       │   ├── fzf.nix                       # Fuzzy finder
-│       │   ├── direnv.nix                    # Directory environment
-│       │   └── tmux.nix                      # Terminal multiplexer
-│       └── desktop/
-│           ├── niri.nix                      # Niri config (home-manager)
-│           └── dms.nix                       # DMS config (home-manager)
-├── Makefile                                   # Build targets
-├── fonts/                                     # Custom fonts
-└── README.md                                  # This file
-```
+- [flake.nix](flake.nix): flake entry point and the host definitions
+- [hosts/nixos/configuration.nix](hosts/nixos/configuration.nix): machine-specific settings
+- [modules/](modules/): reusable system modules
+- [home/](home/): Home Manager configuration
 
-## 🖥️ Desktop Environment
+## Quick start
 
-### Niri Window Manager
-- **Type**: Tiling window manager for Wayland
-- **Keyboard Layouts**: English (US), Italian, Russian
-- **Layout Switching**: Alt+Shift
-- **Configuration**: `home/programs/desktop/niri.nix`
-- **Key Features**:
-  - Vim-style navigation (Super+HJKL)
-  - 10 workspaces
-  - Column-based layout
-  - Customizable keybindings
-  - Volume and brightness controls via media keys
-
-### DMS Display Manager
-- **Type**: Display manager with Wayland support
-- **Compositor**: Niri
-- **Configuration**: `modules/desktop/dms.nix` and `home/programs/desktop/dms.nix`
-
-### Keyboard Layouts in Niri
-- **US** (default)
-- **Italian** (IT)
-- **Russian** (RU)
-- **Switch**: Alt+Shift to cycle through layouts
-
-## 🛠️ Requirements
-
-- **NixOS**: 26.05
-- **Flakes**: Enabled (`nix-command` and `flakes` in experimental features)
-- **Git**: For flake inputs
-
-## 📝 Usage
-
-### With Makefile
+If you are setting this up on a new machine, the usual flow is:
 
 ```bash
-# Rebuild and switch to new configuration
-make switch HOST=nixos
-
-# Test new configuration without switching
-make test HOST=nixos
-
-# Set configuration for next boot
-make boot HOST=nixos
-
-# Update flake inputs
-make update
-
-# Check flake syntax
-make check
-
-# List system generations
-make list-generations
-```
-
-### Direct Commands
-
-```bash
-# Rebuild and switch
 sudo nixos-rebuild switch --flake .#nixos
+```
 
-# Rebuild and test
+For a dry run before switching:
+
+```bash
 sudo nixos-rebuild test --flake .#nixos
-
-# Update flake inputs
-nix flake update
-
-# Check flake
-nix flake check
 ```
 
-## 🔧 Home Manager Configuration
+## Useful commands
 
-The Home Manager configuration is organized into modular files under `home/programs/`:
+These are available through zsh aliases as well:
 
-### Shell Programs
-- **zsh**: Shell with powerlevel10k theme and custom aliases
-- **starship**: Minimal prompt alternative
-- **zoxide**: Directory navigation with history
-
-### Development Tools
-- **git**: Version control with custom aliases
-- **neovim**: Default editor (vi/vim alias)
-- **nix-index**: Quick package lookup
-
-### CLI Utilities
-- **bat**: Cat alternative with syntax highlighting
-- **eza**: Modern ls replacement with git integration
-- **fzf**: Fuzzy finder with zsh integration
-- **direnv**: Automatic environment switching
-- **tmux**: Terminal multiplexer with vim keybindings
-
-### Desktop
-- **niri**: Window manager configuration
-- **dms**: Display manager configuration
-
-## 🚀 Keyboard Shortcuts in Niri
-
-| Action | Shortcut |
-|--------|----------|
-| Close window | Super+Q |
-| Focus left/right | Super+H/L |
-| Focus up/down | Super+K/J |
-| Move window | Super+Shift+HJKL |
-| Resize window | Super+Ctrl+HJKL |
-| Workspace 1-9 | Super+1-9 |
-| Move to workspace | Super+Shift+1-9 |
-| Maximize window | Super+F |
-| 50% width | Super+S |
-| Cycle column width | Super+R |
-| Terminal | Super+Return |
-| App launcher | Super+Space |
-| Screenshot (full) | Print |
-| Screenshot (region) | Super+Print |
-| Raise volume | XF86AudioRaiseVolume |
-| Lower volume | XF86AudioLowerVolume |
-| Mute | XF86AudioMute |
-| Brightness up | XF86MonBrightnessUp |
-| Brightness down | XF86MonBrightnessDown |
-
-## 📦 Installed Packages
-
-### Development
-- VS Code (unstable)
-- Lazygit, Lazydocker
-- DBEaver, pgAdmin4
-- Dive (Docker image explorer)
-- Postman
-- ripgrep, fd, tldr
-
-### System Tools
-- httpie
-- fastfetch
-- Nix utilities
-
-### Gaming & Minecraft
-- Minecraft Java runtime
-- Gaming packages
-
-## ⚙️ Important Notes
-
-- **State Version**: `system.stateVersion` in `modules/system/state-version.nix` should match your NixOS installation to avoid unintended migrations
-- **Username**: Default user is `elxes`. Update in `home/elxes.nix` and `flake.nix` if different
-- **Hostname**: Default is `nixos`. Update flake.nix if using a different name
-- **Hardware**: Check `hardware-configuration.nix` matches your system after fresh install
-
-## 🐛 Troubleshooting
-
-### Rebuild Fails
 ```bash
-sudo nixos-rebuild switch --flake .#nixos --show-trace
+nrs   # rebuild and switch the main host
+nrt   # rebuild and test the main host
+nrb   # rebuild and set the new config for next boot
+nfu   # update flake inputs
+nfc   # run flake checks
+nfi   # build the live ISO
 ```
 
-### Niri Layout Issues
-- Check if all keybindings are recognized: `niri msg binds`
-- Verify keyboard layouts: `niri msg outputs`
-- Check logs: `journalctl -xe`
+To build the live ISO manually:
 
-### Home Manager Issues
 ```bash
-# Force home-manager activation
-home-manager switch --flake .#elxes
+nix build .#packages.x86_64-linux.iso
 ```
 
-### Display Manager Won't Start
-- Verify DMS is correctly enabled in `modules/desktop/dms.nix`
-- Check systemd service logs: `journalctl -u display-manager -xe`
+## Live ISO
 
-## 📚 References
+There is also a graphical live CD target in this flake. It is useful for booting into a desktop environment, installing NixOS, or testing the configuration without touching the installed system.
 
-- [NixOS Manual](https://nixos.org/manual/nixos/stable/)
-- [Home Manager Manual](https://nix-community.github.io/home-manager/)
-- [Niri Documentation](https://github.com/YaLTeR/niri)
-- [Flakes Documentation](https://nixos.wiki/wiki/Flakes)
+## Notes
+
+- The default user is `elxes` for the main host.
+- The default hostname is `nixos`.
+- The live CD user is `nixos` with password `nixos`.
+- If you change hardware, review [hardware-configuration.nix](hardware-configuration.nix) after a fresh install.
+
+## A few things included
+
+- Niri as the window manager
+- Home Manager setup for shell tools, editors, and common CLI utilities
+- Development tools such as Git, Neovim, VS Code, Docker tooling, and language toolchains
+- Desktop apps for browsing, communication, office work, media, and virtualization

@@ -10,43 +10,33 @@ let
 
   handbrake-native = pkgs.handbrake.overrideAttrs (old: (optimizedEnv old) // { pname = "handbrake-native"; });
   ffmpeg-native = pkgs.ffmpeg.overrideAttrs (old: (optimizedEnv old) // { pname = "ffmpeg-native"; doCheck = false; });
+
+  browsers = import ./desktop-browsers.nix { inherit pkgs; };
+  communications = import ./desktop-communications.nix { inherit pkgs; };
+  multimedia = import ./desktop-multimedia.nix { inherit pkgs; };
+  productivity = import ./desktop-productivity.nix { inherit pkgs; };
+  utilities = import ./desktop-utilities.nix { inherit pkgs; };
+  virtualization = import ./desktop-virtualization.nix { inherit pkgs; };
 in
 {
-  environment.systemPackages = with pkgs; [
-    firefox
-    unstable.mpv
-    unstable.discord
-    unstable.telegram-desktop
-    libreoffice-fresh
-    hunspell
-    hunspellDicts.it_IT
-    hunspellDicts.en_US
-    gparted
-    gnome-tweaks
-    bleachbit
-    mission-center
-    qbittorrent
-    filezilla
-    p7zip
-    unzip
-    unrar
-    file-roller
-    gnome-disk-utility
-    gnome-software
-    flameshot
-    obs-studio
-    handbrake-native
-    ffmpeg-native
-    wayland-utils
-    wl-clipboard
-    xclip
-    keepassxc
-    unstable.gimp
-    virt-manager
-    easyeffects
-    virt-viewer
-    alacritty
-    nautilus
-  ];
-}
+  # Waydroid system configuration
+  virtualisation.waydroid = {
+    enable = true;
+    package = pkgs.waydroid-nftables;
+  };
 
+  # Package list configuration
+  environment.systemPackages = with pkgs; (
+    browsers
+    ++ communications
+    ++ multimedia
+    ++ productivity
+    ++ utilities
+    ++ virtualization
+    ++ [
+      handbrake-native
+      ffmpeg-native
+      temurin-bin-25
+    ]
+  );
+}

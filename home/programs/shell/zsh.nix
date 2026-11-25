@@ -39,6 +39,7 @@
       nrb = "sudo nixos-rebuild boot --flake .#nixos";
       nfu = "nix flake update";
       nfc = "nix flake check";
+      nfi = "nix build .#packages.x86_64-linux.iso";
       ncg = "sudo nix-collect-garbage -d";
 
       # Git shortcuts

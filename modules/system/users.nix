@@ -17,6 +17,22 @@
     shell = pkgs.zsh;
   };
 
+  users.users.yulia = {
+    isNormalUser = true;
+    description = "Yulia";
+    extraGroups = [ 
+      "wheel" 
+      "networkmanager" 
+      "video" 
+      "audio"
+      "docker"
+      "libvirtd"
+    ];
+
+    # Default shell
+    shell = pkgs.zsh;
+  };
+
   # Enable zsh
   programs.zsh.enable = true;
 }

@@ -2,13 +2,6 @@
 
 {
   # Development services
-  services = {
-    # PostgreSQL (disabled by default)
-    postgresql = {
-      enable = false;
-      package = pkgs.postgresql_16;
-    };
-  };
 
   # Virtualization
   virtualisation = {
@@ -54,8 +47,6 @@
 
   # System-level development packages
   environment.systemPackages = with pkgs; [
-    # Java
-
     # Version control
     git
     gh
@@ -99,6 +90,7 @@
     tmux
     screen
     nix-index
+    unstable.yt-dlp
     
     # Documentation
     man-pages

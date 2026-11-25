@@ -29,8 +29,6 @@
     unstable.pcsx2
     
     # Tools
-    unstable.mangohud
-    unstable.goverlay
     protonup-qt
     cabextract
     

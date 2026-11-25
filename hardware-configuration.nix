@@ -14,19 +14,19 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/b4bad890-fe10-4e2e-9a28-e22caa156e10";
+    { device = "/dev/disk/by-label/root";
       fsType = "btrfs";
-      options = [ "x-gvfs-show" "x-gvfs-name=Root" ];
+      options = [ "x-gvfs-show" "x-gvfs-name=Root" "compress=zstd:1" ];
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/48a51772-cde8-44cb-89d9-af398bd1abcf";
+    { device = "/dev/disk/by-label/home";
       fsType = "btrfs";
-      options = [ "x-gvfs-show" "x-gvfs-name=Home" ];
+      options = [ "x-gvfs-show" "x-gvfs-name=Home" "compress=zstd:1" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/73C8-7E04";
+    { device = "/dev/disk/by-label/boot";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };

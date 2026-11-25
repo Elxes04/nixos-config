@@ -6,7 +6,7 @@
   services.flatpak.remotes = [
     {
       name = "flathub";
-      location = "https://flathub.org/repo/flathub.flatpakrepo";
+      location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
     }
   ];
 
@@ -14,12 +14,11 @@
     "app.zen_browser.zen"
     "com.github.gabutakut.gabutdm"
     "com.github.tchx84.Flatseal"
-    "com.mattjakeman.ExtensionManager"
+    "com.stremio.Stremio"
     "com.termius.Termius"
+    "io.github.victoralvesf.aonsoku"
     "org.keepassxc.KeePassXC"
-    "org.localsend.localsend_app"
     "org.shotcut.Shotcut"
     "org.vinegarhq.Sober"
-    "io.github.victoralvesf.aonsoku"
   ];
 }
